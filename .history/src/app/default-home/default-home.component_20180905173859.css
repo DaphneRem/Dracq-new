@@ -1,0 +1,8 @@
+.user-name {
+    margin-left : 10px;
+    padding-right: 30px;
+}
+
+/deep/ .navbar-toggler {
+    display : none;
+}
