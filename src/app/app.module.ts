@@ -2,29 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
-
-import { DefaultHomeComponent } from './default-home/default-home.component';
-
-const APP_CONTAINERS = [
-  DefaultHomeComponent
-];
-
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-
-import { LoginComponent } from './views/login/login.component';
-
+/* coreUI imports */
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -33,22 +11,49 @@ import {
   AppSidebarModule,
 } from '@coreui/angular';
 
+/* perfect scrollbar import */
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+/* externals modules imports */
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
+/* components imports */
+import { AppComponent } from './app.component';
+import { DefaultHomeComponent } from './default-home/default-home.component';
+import { LoginComponent } from './views/login/login.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { CustomDatatablesModule } from './custom-datatables/custom-datatables.module';
+
+/* const declarations */
+const APP_CONTAINERS = [
+  DefaultHomeComponent
+];
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     ...APP_CONTAINERS,
+    LoginComponent,
   ],
   imports: [
-    AppRoutingModule,
-    BrowserModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
-    AppHeaderModule,
     AppFooterModule,
+    AppHeaderModule,
+    AppRoutingModule,
     AppSidebarModule,
-    PerfectScrollbarModule,
+    BrowserModule,
     BsDropdownModule.forRoot(),
+    CustomDatatablesModule,
+    PerfectScrollbarModule,
     TabsModule.forRoot(),
   ],
   providers: [{
