@@ -174,7 +174,7 @@ export const navItems = [
     // },
     {
       name: 'Déconnexion',
-      url: '/widgets',
+      url: '/login',
       icon: 'icon-close',
       // badge: {
       //   variant: 'info',
