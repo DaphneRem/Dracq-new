@@ -5,9 +5,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { DefaultHomeComponent } from './default-home/default-home.component';
 import { LoginComponent } from './views/login/login.component';
+import { TransactionsInProgressComponent } from './pages/transactions-in-progress/transactions-in-progress.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'in-progress', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent,
@@ -15,7 +16,16 @@ const routes: Routes = [
       title: 'Login Page'
     }
   },
-  { path: 'home', component: DefaultHomeComponent }
+  { 
+    path: '', 
+    component: DefaultHomeComponent,
+    children: [
+      {
+        path: 'in-progress',
+        component: TransactionsInProgressComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

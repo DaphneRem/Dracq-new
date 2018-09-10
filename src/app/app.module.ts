@@ -27,6 +27,7 @@ import { LoginComponent } from './views/login/login.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CustomDatatablesModule } from './custom-datatables/custom-datatables.module';
+import { TransactionsInProgressComponent } from './pages/transactions-in-progress/transactions-in-progress.component';
 
 /* const declarations */
 const APP_CONTAINERS = [
@@ -42,6 +43,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppComponent,
     ...APP_CONTAINERS,
     LoginComponent,
+    TransactionsInProgressComponent,
   ],
   imports: [
     AppAsideModule,
