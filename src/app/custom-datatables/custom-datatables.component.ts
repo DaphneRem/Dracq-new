@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs/Subject';
 
-import { CustomDatatablesOptions } from '../models/custom-datatables-options';
-import { CustomThemesService } from '../services/custom-datatables-themes.service';
+import { CustomDatatablesOptions } from './models/custom-datatables-options';
+import { CustomThemesService } from './services/custom-datatables-themes.service';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { setTimeout } from 'timers';
 
