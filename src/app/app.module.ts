@@ -39,6 +39,8 @@ import { TransactionInProgressTableComponent } from './tables/transaction-in-pro
 
 import { AppRoutingModule } from './app-routing.module';
 import { CustomDatatablesModule } from './custom-datatables/custom-datatables.module';
+import { TransactionsCompletedPageComponent } from './pages/transactions-completed-page/transactions-completed-page.component';
+import { TransactionCompletedTableComponent } from './tables/transaction-completed-table/transaction-completed-table.component';
 
 /* const declarations */
 const APP_CONTAINERS = [
@@ -56,6 +58,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     LoginComponent,
     TransactionsInProgressComponent,
     TransactionInProgressTableComponent,
+    TransactionsCompletedPageComponent,
+    TransactionCompletedTableComponent,
   ],
   imports: [
     BrowserModule,

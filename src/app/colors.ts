@@ -1,4 +1,5 @@
-export const blueThemeColor = '#39ADB5'; // in progress
+// export const blueThemeColor = '#39ADB5'; // in progress
+export const blueThemeColor = '#0099d8'; // in progress
 export const greenThemeColor = '#17B978'; // completed
 export const redThemeColor = '#FF5F5F'; // kai
 export const yellowThemeColor = '#FDB44B'; // karina

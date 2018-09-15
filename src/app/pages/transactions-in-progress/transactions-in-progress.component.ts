@@ -10,6 +10,7 @@ export class TransactionsInProgressComponent implements OnInit {
   public daysTableView = 3;
   public headerTableLinkExist = false;
   public goBack = true;
+  
   constructor() { }
 
   ngOnInit() {
