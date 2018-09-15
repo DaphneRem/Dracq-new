@@ -1,138 +1,150 @@
-/* $white : #fff;
-$primaryColor : #4099ff;
-$primaryHover : #73b4ff;
-$warningColor : #FFB64D;
-$warningGradient : linear-gradient(45deg, #FFB64D, #ffcb80);
-$selectedRow : #3b4650;
-$tableButton : #3b4650;
-
-
 .custom-datatables {
     margin : 10px;
     width: inherit;
     padding : 10px;
-    &.hiden {
-        display: none;
-    }
-    .card {
-        border-radius: 0;
-        padding : 10px;
-        padding-top : 20px;
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-        height: 100%;
-        margin-bottom: 0;
-        &.no-data {
-            width: 100%;
-            .alert {
-                border-top-left-radius : 0;
-                border-top-right-radius : 0;
-                p {
-                    margin: 15px;
-                    color : #8b8b8b;
-                }
-            }
-        }
-        .header-buttons {
-            z-index :999;
-            margin-bottom : -55px;
-            margin-left : 10px;
-            max-width: 250px;
-            height : 34px;
-            a {
-                width : 100px;
-                padding : 5px;
-                margin-top: 2px;
-                &:hover {
-                    background: rgb(235, 235, 235);
-                }
-            }
-            button {
-                margin-left : 10px;
-                width : 100px;
-                padding : 5px;
-                color : $white;
-                border-color : $white;
-                &:hover {
-                    background-color: $white;
-                    color : $primaryColor;
-                }
-                &:active, &:focus {
-                    background-color: transparent;
-                    color : $white;
-                }
-            }
-        }
+}
 
-        .datatables-header {
-            height : 60px;
-            width : 100%;
-            color : $white;
-            margin-top :10px;
-            &.down-header {
-                margin-bottom : -37px;
-            }
-            .header-title {
-                font-size: 1.3em;
-                margin-top : 17px;
-            }
-        }
+.custom-datatables:hiden {
+    display: none;
+}
 
-    }
-} 
+.card {
+    border-radius: 0;
+    padding : 10px;
+    padding-top : 20px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+}
 
+.no-data {
+    width: 100%;
+}
 
+.alert {
+    border-top-left-radius : 0;
+    border-top-right-radius : 0;
+}
+
+.alert p {
+    margin: 15px;
+    color : #8b8b8b;
+}
+
+.header-buttons {
+    z-index :999;
+    margin-bottom : -55px;
+    margin-left : 10px;
+    max-width: 250px;
+    height : 34px;
+}
+
+.header-buttons a {
+    z-index :999;
+    margin-bottom : -55px;
+    margin-left : 10px;
+    max-width: 250px;
+    height : 34px;
+}
+
+.header-buttons a:hover {
+    background: rgb(235, 235, 235);
+}
+
+.header-buttons button{
+    margin-left : 10px;
+    width : 100px;
+    padding : 5px;
+    color : #ffffff;
+    border-color : #ffffff;
+}
+
+.header-buttons button:hover{
+    background-color: #ffffff;
+    color : #4099ff;
+}
+
+.header-buttons button:active, .header-buttons button:focus{
+    background-color: transparent;
+    color : #ffffff;
+}
+
+.datatables-header {
+    height : 60px;
+    width : 100%;
+    color : #ffffff;
+    margin-top :10px;
+}
+
+.datatables-header.down-header {
+    margin-bottom : -37px;
+}
+
+.header-title {
+    font-size: 1.3em;
+    margin-top : 17px;
+}
+
+/************************* DEEP **********************/
 
 /deep/ .dataTables_wrapper .dataTables_scroll {
     background: rgb(235, 235, 235);
     margin-bottom: 10px;
-    .dataTables_scrollHead {
-        // background: rgb(189, 195, 199);
-        width : 100%;
-        .dataTables_scrollHeadInner {
-            min-width : 100%;
-            table {
-                min-width: 100%;
-            }
-        }
-    }
-    .dataTables_scrollBody {
-        table {
-            min-width: 100%;
-        }
-    }
 }
 
-// show .. entries :
+/deep/ .dataTables_wrapper .dataTables_scroll .dataTables_scrollHead {
+    /* background: rgb(189, 195, 199); */
+    width : 100%;
+}
+
+/deep/ .dataTables_wrapper .dataTables_scroll .dataTables_scrollHead .dataTables_scrollHeadInner {
+    min-width : 100%;
+}
+
+/deep/ .dataTables_wrapper .dataTables_scroll .dataTables_scrollHead .dataTables_scrollHeadInner table {
+    min-width: 100%;
+}
+
+/deep/ .dataTables_wrapper .dataTables_scroll .dataTables_scrollBody table {
+    min-width: 100%;
+}
+
+/*show .. entries :*/
 /deep/ .dataTables_wrapper .dataTables_length label {
-    color : $white;
-    margin : 0 0 10px 10px;
-    select {
-        border-radius : 5px;
-        padding : 3px;
-    }
+    color : #ffffff;
+    margin : 0 10px 10px 10px;
 }
 
-// Search :
-/deep/ .dataTables_wrapper .dataTables_filter {
-    input[type="search"] {
-        border-radius : 5px;
-    }
-    label {
-        color : rgb(128, 126, 126);
-        margin : -5px 10px 13px 0;
-    }
+/deep/ .dataTables_wrapper .dataTables_length label select {
+    border-radius : 5px;
+    padding : 3px;
 }
 
+/* Search : */
+/deep/ .dataTables_wrapper .dataTables_filter input[type="search"] {
+    border-radius : 5px;
+    margin-right: 10px;
+}
 
-// row columns titles :
+/deep/ .dataTables_wrapper .dataTables_filter input[type="search"] label {
+    color : rgb(128, 126, 126);
+    margin : -5px 10px 13px 0;
+}
+
+/* row columns titles : */
 /deep/ thead {
-    color : $white;
+    color : #ffffff;
 }
 
 /deep/ .table th {
     border-top : 0;
+}
+
+/deep/ .table thead tr th {
+    border-top : 0;
+    border-bottom: 0px;
 }
 
 /deep/ .small-data {
@@ -168,158 +180,148 @@ $tableButton : #3b4650;
     text-align: center;
 }
 
-// scroll :
+/* scroll : */
 /deep/ .dataTables_wrapper.no-footer .dataTables_scrollBody {
     border-bottom: 0;
 }
 
-
-// rows :
+/* rows : */
 /deep/ .dataTables_wrapper .even {
     background-color: rgb(235, 235, 235);
-    &.selected {
-        background: $selectedRow;
-    }
+}
+/deep/ .dataTables_wrapper .even.selected {
+    background: #3b4650; 
 }
 
-/deep/ .dataTables_wrapper .odd {
-    &.selected {
-        background: $selectedRow;
-    }
+/deep/ .dataTables_wrapper .odd.selected {
+    background: #3b4650;
 }
 
-/deep/ table.dataTable.hover tbody > tr.selected {
-    &:hover {
-        background: $selectedRow;
-
-    }
+/deep/ table.dataTable.hover tbody > tr.selected:hover {
+        background: #3b4650;
 }
 
 /deep/ .dataTables_wrapper .dataTables_scroll .dataTables_scrollHeadInner {
         margin: 0 auto;
 }
 
-// footer
+/* footer */
 /deep/ .ellipsis::after {
     display: none;
 }
 
-// pagination :
+/* pagination : */
 /deep/ .dataTables_wrapper .dataTables_paginate .paginate_button {
     border :0;
-    &:hover {
-        background: rgb(206, 204, 204);
-        border :0;
-    }
-    &.current {
-        background: $tableButton;
-        border : 0;
-        color : $white !important;
-        &:hover {
-            background: $tableButton;
-            border : 0;
-            color : $white !important;
-        }
-    }
-
 }
 
-// buttons :
+/deep/ .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: rgb(206, 204, 204);
+    border :0;
+}
+
+/deep/ .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #3b4650;
+    border : 0;
+    color : #ffffff !important;
+}
+
+/deep/ .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: #3b4650;
+    border : 0;
+    color : #ffffff !important;
+}
+
+/* buttons : */
 /deep/ .dataTables_wrapper .dt-buttons {
     position: absolute;
     bottom: 0;
-    .dt-button {
-        color :$white;
-        background-color : $tableButton;
-        background-image: none;
-        border-color : $tableButton;
-        cursor : pointer;
-        transition: all ease-in 0.3s;
-        border-radius: 2px;
-        text-transform: capitalize;
-        font-size: 15px;
-        padding: 5px;
-        margin : 3px;
-        width: 100%;
-        // width: initial;
-        &:hover {
-            background-color: $white;
-            background-image: none;
-            border-color: $tableButton;
-            color :$tableButton;
-        }
-        &:active {
-            background-color: $white;
-            background-image: none;
-            border-color: $tableButton;
-            color :$tableButton;
-        }
-        &:focus {
-            background-color: $white;
-            background-image: none;
-            border-color: $tableButton;
-            color :$tableButton;
-        }
-        &.buttons-columnVisibility {
-            background-color: #ffffff;
-            color: $tableButton;
-            &.active {
-                background-image : none;
-                background-color: $tableButton;
-                border: 1px solid $white;
-                color: #ffffff;
-                padding: 5px;
-                cursor : pointer;
-                transition: all ease-in 0.3s;
-                border-radius: 2px;
-                font-size: 15px;
-                &:hover {
-                    background-color: $white;
-                    background-image: none;
-                    border-color: $tableButton;
-                    color :$tableButton;
-                }
-            }
-        }
-    }
-    div.dt-button-collection {
-        // margin-top: -45px;
-        margin-top: -210px; 
-        display: inline-block;
-        width: auto;
-        // display: flex;
-        // width: inherit;
-        max-width: 100vw;
-    }
-    div.dt-button-collection button.dt-button.active:not(.disabled) {
-        background-color: $white;
-        background-image: none;
-        border-color: $tableButton;
-        color :$tableButton;
-        &.buttons-columnVisibility {
-            background-color: #ffffff;
-            color: $tableButton;
-            &.active {
-                background-image : none;
-                background-color: $tableButton;
-                border: 1px solid $tableButton;
-                color: #ffffff;
-                padding: 5px;
-                cursor : pointer;
-                transition: all ease-in 0.3s;
-                border-radius: 2px;
-                font-size: 15px;
-                &:hover {
-                    background-color: $white;
-                    background-image: none;
-                    border-color: $tableButton;
-                    color :$tableButton;
-                }
-            }
-        }
-    }
 }
 
+/deep/ .dataTables_wrapper .dt-buttons .dt-button {
+    color :#ffffff;
+    background-color : #3b4650;
+    background-image: none;
+    border-color : #3b4650;
+    cursor : pointer;
+    transition: all ease-in 0.3s;
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: 5px;
+    margin : 3px;
+    width: 100%;
+    /* width: initial;*/
+}
+
+/deep/ .dataTables_wrapper .dt-buttons .dt-button:hover,
+.dataTables_wrapper .dt-buttons .dt-button:active,
+.dataTables_wrapper .dt-buttons .dt-button:focus {
+    background-color: #ffffff;
+    background-image: none;
+    border-color: #3b4650;
+    color : #3b4650;
+}
+
+/deep/ .dataTables_wrapper .dt-buttons .dt-button.buttons-columnVisibility {
+    background-color: #ffffff;
+    color: #3b4650;
+}
+
+/deep/ .dataTables_wrapper .dt-buttons .dt-button.buttons-columnVisibility.active {
+    background-image : none;
+    background-color: #3b4650;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    padding: 5px;
+    cursor : pointer;
+    transition: all ease-in 0.3s;
+    border-radius: 2px;
+    font-size: 15px;
+}
+
+/deep/ .dataTables_wrapper .dt-buttons .dt-button.buttons-columnVisibility.active:hover {
+    background-color: #ffffff;
+    background-image: none;
+    border-color: #3b4650;
+    color :#3b4650;
+}
+
+/deep/ .dataTables_wrapper .dt-buttons div.dt-button-collection {
+    /* margin-top: -45px; */
+    margin-top: -210px; 
+    display: inline-block;
+    width: auto;
+    /* display: flex; */
+    /* width: inherit; */
+    max-width: 100vw;
+}
+
+/deep/ .dataTables_wrapper .dt-buttons div.dt-button-collection button.dt-button.active:not(.disabled) {
+    background-color: #ffffff;
+    background-image: none;
+    border-color: #3b4650;
+    color :#3b4650;
+}
+
+/deep/ .dataTables_wrapper .dt-buttons div.dt-button-collection button.dt-button.active:not(.disabled).active {
+    background-image : none;
+    background-color: #3b4650;
+    border: 1px solid #3b4650;
+    color: #ffffff;
+    padding: 5px;
+    cursor : pointer;
+    transition: all ease-in 0.3s;
+    border-radius: 2px;
+    font-size: 15px;
+}
+
+/deep/ .dataTables_wrapper .dt-buttons div.dt-button-collection button.dt-button.active:not(.disabled).active:hover {
+    background-color: #ffffff;
+    background-image: none;
+    border-color: #3b4650;
+    color : #3b4650;
+}
 
 
 /deep/ .dataTables_wrapper .dataTables_info {
@@ -328,42 +330,34 @@ $tableButton : #3b4650;
     display : flex;
 }
 
-
-
 /deep/ .dataTables_wrapper.no-footer div.dataTables_scrollBody > table {
     background: #ebebeb;
 
 }
 
-
 /deep/ table.dataTable > tbody > tr.child ul.dtr-details  {
     width : 100%;
 }
 
-/deep/ table.dataTable > tbody > tr.child > td.child{
-    &:hover {
+/deep/ table.dataTable > tbody > tr.child > td.child:hover {
         background: #f5f5f5;
-    }
 }
 
 @media only screen and (max-width: 1024px) {
 
-    /deep/ .dataTables_wrapper .dt-buttons {
-        .dt-button {
-            width: 100%;
-            &.buttons-columnVisibility {
-                width : 140px;
-            }
-        }
-        div.dt-button-collection {
-            margin-top: -330px; 
-            display: inline-block;
-            width: auto;
-        }
+    /deep/ .dataTables_wrapper .dt-buttons .dt-button {
+        width: 100%;
+    }
+    /deep/ .dataTables_wrapper .dt-buttons .dt-button .buttons-columnVisibility {
+        width: 100%;
+    }
+    /deep/ .dataTables_wrapper .dt-buttons div.dt-button-collection {
+        margin-top: -330px; 
+        display: inline-block;
+        width: auto;
     }
 
 }
-
 
 @media only screen and (max-width: 768px) {
 
@@ -371,15 +365,14 @@ $tableButton : #3b4650;
         display: none;
     }
 
-    .custom-datatables {
-        .card {
-            .datatables-header {
+    .datatables-header {
                 height: 140px;
-                .header-title {
-                    margin-top : 60px;
-                }
-            }
-        }
     }
 
-} */
+    .header-title {
+        margin-top : 60px;
+    }
+
+}
+
+

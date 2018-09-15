@@ -15,9 +15,10 @@
     </li>
   </ol>
   <div class="container-fluid">
-    <p>
-      transactions-in-progress works!
-    </p>
+    <app-transaction-in-progress-table
+    [headerTableLinkExist]="headerTableLinkExist" 
+    [daysTableView]="daysTableView">
+  </app-transaction-in-progress-table>
   </div>
 </main>
 

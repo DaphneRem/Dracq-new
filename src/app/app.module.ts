@@ -1,6 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { HttpClientModule }    from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
+// provisional imports
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+
+import { InMemoryDataService }  from './services/in-memory-data.service';
 
 /* coreUI imports */
 import {
@@ -24,10 +34,11 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AppComponent } from './app.component';
 import { DefaultHomeComponent } from './default-home/default-home.component';
 import { LoginComponent } from './views/login/login.component';
+import { TransactionsInProgressComponent } from './pages/transactions-in-progress/transactions-in-progress.component';
+import { TransactionInProgressTableComponent } from './tables/transaction-in-progress-table/transaction-in-progress-table.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CustomDatatablesModule } from './custom-datatables/custom-datatables.module';
-import { TransactionsInProgressComponent } from './pages/transactions-in-progress/transactions-in-progress.component';
 
 /* const declarations */
 const APP_CONTAINERS = [
@@ -44,24 +55,37 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ...APP_CONTAINERS,
     LoginComponent,
     TransactionsInProgressComponent,
+    TransactionInProgressTableComponent,
   ],
   imports: [
+    BrowserModule,
+
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
     AppHeaderModule,
-    AppRoutingModule,
     AppSidebarModule,
-    BrowserModule,
     BsDropdownModule.forRoot(),
     CustomDatatablesModule,
+    FormsModule,
+    HttpModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    ),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
     PerfectScrollbarModule,
     TabsModule.forRoot(),
+    AppRoutingModule,
+
   ],
-  providers: [{
+  providers: [
+    {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+    },
+    InMemoryDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

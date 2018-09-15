@@ -19,12 +19,11 @@ import { Subject } from 'rxjs/Subject';
 import { CustomDatatablesOptions } from './models/custom-datatables-options';
 import { CustomThemesService } from './services/custom-datatables-themes.service';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
-import { setTimeout } from 'timers';
 
 @Component({
   selector: 'custom-datatables',
   templateUrl: './custom-datatables.component.html',
-  styleUrls: ['./custom-datatables.component.scss'],
+  styleUrls: ['./custom-datatables.component.css'],
   providers: [
     CustomThemesService,
     CustomDatatablesOptions

@@ -1,0 +1,6 @@
+<div *ngIf="checkDataReady()" >
+  <custom-datatables 
+    [customdatatablesOptions]="customdatatablesOptions"
+    (change)="rerender($event)">
+  </custom-datatables>
+</div>
