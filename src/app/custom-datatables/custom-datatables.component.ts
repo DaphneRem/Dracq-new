@@ -346,7 +346,8 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
         this.finalData.push({
           title: item.title.toUpperCase(),
           data: item.data,
-          className: item.className
+          className: item.className,
+          render: item.render
         })
       );
       // console.log(this.finalData);

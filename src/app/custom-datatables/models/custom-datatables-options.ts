@@ -30,7 +30,7 @@ export class CustomDatatablesOptions {
 
 export class Columns {
   title: string;
-  data: any;
+  data?: any;
   class?: string;
   className?: string;
   // createdCell?: any;

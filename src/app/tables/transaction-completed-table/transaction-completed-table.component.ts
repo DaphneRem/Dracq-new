@@ -11,6 +11,7 @@ import {
 import { Router } from '@angular/router';
 
 import { CustomDatatablesOptions } from '../../custom-datatables/models/custom-datatables-options';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { TransactionsService } from '../../services/transactions.service';
 import { Transaction } from '../../models/transaction-global';
@@ -32,6 +33,7 @@ export class TransactionCompletedTableComponent implements OnInit {
 
   public render: boolean;
   public data: Transaction[];
+  public primaryModal;
 
   public dataReady = false;
   public customdatatablesOptions: CustomDatatablesOptions = {
@@ -44,17 +46,20 @@ export class TransactionCompletedTableComponent implements OnInit {
     paging: true,
     search: true,
     rowsMax: 10,
-    importantData : [
-      {
-        index : 4,
-        className: 'warning',
-        cellData: ['Bad Storage']
-      }
-    ],
+    // importantData : [
+    //   {
+    //     index : 4,
+    //     className: 'warning',
+    //     cellData: ['Bad Storage']
+    //   }
+    // ],
     lenghtMenu: [5, 10, 15],
     theme : 'blue theme',
     renderOption : true,
     dbClickActionExist: true,
+    clickActionExist: true,
+    multiSelection: false,
+    selectionBtn: true,
     buttons: {
       buttons: true,
       allButtons: true,
@@ -92,9 +97,12 @@ export class TransactionCompletedTableComponent implements OnInit {
 
   displayAction() {
     this.customdatatablesOptions.dbClickAction = (dataRow) => {
-      // this.router.navigate([`/detail-file/support/${dataRow.id}/seg/${dataRow.noseg}`]);
+      this.router.navigate([`/login`]);
       console.log('click action');
     };
+    this.customdatatablesOptions.clickAction = (dataRow) => {
+      console.log('one click');
+    }
     this.customdatatablesOptions.tooltipHeader = 'Double cliquer sur un fichier pour avoir une vue détaillée';
   }
 
@@ -166,6 +174,14 @@ export class TransactionCompletedTableComponent implements OnInit {
         title : 'Type DR',
         data : 'typeDR'
       },
+      // {
+      //   title: '',
+      //   data: 'typeDR',
+      //   render: function (data: any, type: any, full: any) {
+      //     data = `<button type="button" class="btn btn-primary" data-toggle="modal" routerLink="/login" (click)="primaryModal.show()">Détails</button>`;
+      //     return data;
+      //   }
+      // }
     ];
   }
 }

@@ -1,0 +1,6 @@
+.main {
+    margin-left: 0;
+}
+.sidebar-lg-show.sidebar-fixed .main {
+        margin-left: 0px !important;
+}

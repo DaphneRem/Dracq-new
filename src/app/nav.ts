@@ -14,12 +14,12 @@ export const navItems = [
     },
     {
       name: 'En cours',
-      url: '/theme/colors',
+      url: '/in-progress',
       icon: 'icon-drop'
     },
     {
       name: 'Terminées',
-      url: '/theme/typography',
+      url: '/completed',
       icon: 'icon-pencil'
     },
     {

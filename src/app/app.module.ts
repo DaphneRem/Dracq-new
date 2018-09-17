@@ -29,6 +29,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 /* externals modules imports */
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 /* components imports */
 import { AppComponent } from './app.component';
@@ -77,6 +78,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
+    ModalModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
     PerfectScrollbarModule,
     TabsModule.forRoot(),
