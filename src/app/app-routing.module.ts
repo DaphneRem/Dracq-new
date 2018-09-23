@@ -9,7 +9,7 @@ import { TransactionsInProgressComponent } from './pages/transactions-in-progres
 import { TransactionsCompletedPageComponent } from './pages/transactions-completed-page/transactions-completed-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     component: LoginComponent,

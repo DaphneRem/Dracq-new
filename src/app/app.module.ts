@@ -42,6 +42,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { CustomDatatablesModule } from './custom-datatables/custom-datatables.module';
 import { TransactionsCompletedPageComponent } from './pages/transactions-completed-page/transactions-completed-page.component';
 import { TransactionCompletedTableComponent } from './tables/transaction-completed-table/transaction-completed-table.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 /* const declarations */
 const APP_CONTAINERS = [
@@ -83,6 +87,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
     TabsModule.forRoot(),
     AppRoutingModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
 
   ],
   providers: [

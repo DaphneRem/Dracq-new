@@ -153,5 +153,8 @@
       }
     }
   },
-  "defaultProject": "app-dracq"
+  "defaultProject": "app-dracq",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
