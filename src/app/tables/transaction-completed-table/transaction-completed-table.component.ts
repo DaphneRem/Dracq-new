@@ -54,7 +54,7 @@ export class TransactionCompletedTableComponent implements OnInit {
     //   }
     // ],
     lenghtMenu: [5, 10, 15],
-    theme : 'blue theme',
+    theme : 'green theme',
     renderOption : true,
     dbClickActionExist: true,
     clickActionExist: true,

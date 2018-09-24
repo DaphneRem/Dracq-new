@@ -15,12 +15,17 @@ export const navItems = [
     {
       name: 'En cours',
       url: '/in-progress',
-      icon: 'icon-drop'
+      icon: 'icon-clock'
     },
     {
       name: 'Terminées',
       url: '/completed',
-      icon: 'icon-pencil'
+      icon: 'icon-check'
+    },
+    {
+      name: 'Créer une vente',
+      url: '/login',
+      icon: 'icon-plus'
     },
     {
       title: true,
