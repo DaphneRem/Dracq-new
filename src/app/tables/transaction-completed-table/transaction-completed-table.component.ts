@@ -147,27 +147,27 @@ export class TransactionCompletedTableComponent implements OnInit {
         data : 'client',
       },
       {
-        title : 'Nom du vendeur',
+        title : 'Vendeur',
         data : 'sellerName',
       },
       {
-        title : "Nom de l'acquéreur",
+        title : 'Acquéreur',
         data : 'buyerName'
       },
       {
-        title : 'Nom du dossier/Portefeuille',
+        title : 'Portefeuille',
         data : 'RepoName'
       },
       {
-        title : 'Adresse du bien',
+        title : 'Biens',
         data : 'address'
       },
       {
-        title : 'Date de signature',
+        title : 'Signature',
         data : 'signatureDate'
       },
       {
-        title : 'Confrère ayant réalisé la data room',
+        title : 'Confrère',
         data : 'dataRoomCreator'
       },
       {
