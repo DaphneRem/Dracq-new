@@ -7,10 +7,10 @@ import { HttpClientModule }    from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
 // provisional imports
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-import { InMemoryDataService }  from './services/in-memory-data.service';
+// import { InMemoryDataService }  from './services/in-memory-data.service';
 
 /* coreUI imports */
 import {
@@ -68,7 +68,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   imports: [
     BrowserModule,
-
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
@@ -79,9 +78,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FormsModule,
     HttpModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // ),
     ModalModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
     PerfectScrollbarModule,
@@ -96,7 +95,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
     },
-    InMemoryDataService
+    // InMemoryDataService
   ],
   bootstrap: [AppComponent]
 })
