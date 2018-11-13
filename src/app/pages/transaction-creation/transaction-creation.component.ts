@@ -17,6 +17,7 @@ export class TransactionCreationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('init TransactionComponent')
     this.getStatutDossier();
   }
 
