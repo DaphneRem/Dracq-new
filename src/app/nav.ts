@@ -24,7 +24,7 @@ export const navItems = [
     },
     {
       name: 'Créer une vente',
-      url: '/login',
+      url: '/creation',
       icon: 'icon-plus'
     },
     {

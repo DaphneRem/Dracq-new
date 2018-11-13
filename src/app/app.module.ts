@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // provisional imports
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 // import { InMemoryDataService }  from './services/in-memory-data.service';
 
@@ -46,6 +47,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { TransactionCreationComponent } from './pages/transaction-creation/transaction-creation.component';
 
 /* const declarations */
 const APP_CONTAINERS = [
@@ -65,6 +67,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TransactionInProgressTableComponent,
     TransactionsCompletedPageComponent,
     TransactionCompletedTableComponent,
+    TransactionCreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +87,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ModalModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService),
     PerfectScrollbarModule,
+    NgbModule,
     TabsModule.forRoot(),
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),

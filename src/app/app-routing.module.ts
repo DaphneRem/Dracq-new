@@ -7,6 +7,7 @@ import { DefaultHomeComponent } from './default-home/default-home.component';
 import { LoginComponent } from './views/login/login.component';
 import { TransactionsInProgressComponent } from './pages/transactions-in-progress/transactions-in-progress.component';
 import { TransactionsCompletedPageComponent } from './pages/transactions-completed-page/transactions-completed-page.component';
+import { TransactionCreationComponent } from './pages/transaction-creation/transaction-creation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'completed',
         component: TransactionsCompletedPageComponent
+      },
+      {
+        path: 'creation',
+        component: TransactionCreationComponent
       }
     ]
   }
