@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { HttpClientModule }    from '@angular/common/http';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -39,7 +38,7 @@ import { CustomDatatablesModule } from './custom-datatables/custom-datatables.mo
 import { TransactionsCompletedPageComponent } from './pages/transactions-completed-page/transactions-completed-page.component';
 import { TransactionCompletedTableComponent } from './tables/transaction-completed-table/transaction-completed-table.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/reducers';
+// import { reducers, metaReducers } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { TransactionCreationComponent } from './pages/transaction-creation/transaction-creation.component';
@@ -74,14 +73,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BsDropdownModule.forRoot(),
     CustomDatatablesModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     ModalModule,
     PerfectScrollbarModule,
     NgbModule,
     TabsModule.forRoot(),
     AppRoutingModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
+    // StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
   ],

@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 import { Dataroom } from '../models/dataroom-libelle';
 
 // temporary imports :
-import { externalHttpRootUrl, dataroomLibelleUrl } from '../../../privates-url';
+import { rootUrl, dataroomLibelleUrl } from '../../../privates-url';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -26,7 +26,7 @@ export class DataroomService {
   /* GET ONE FICHE MATERIEL BY ID */
   getDataroom(): Observable<Dataroom[]> {
     return this.http
-      .get(externalHttpRootUrl + dataroomLibelleUrl)
+      .get(rootUrl + dataroomLibelleUrl)
       .map((res: any) => {
         console.log(res);
         return res as Dataroom[];

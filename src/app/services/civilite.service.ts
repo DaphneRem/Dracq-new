@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 import { Civilite } from '../models/civilite-libelle';
 
 // temporary imports :
-import { externalHttpRootUrl, civiliteLibelleUrl } from '../../../privates-url';
+import { rootUrl, civiliteLibelleUrl } from '../../../privates-url';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -26,7 +26,7 @@ export class CiviliteService {
   /* GET ONE FICHE MATERIEL BY ID */
   getCivilite(): Observable<Civilite[]> {
     return this.http
-      .get(externalHttpRootUrl + civiliteLibelleUrl)
+      .get(rootUrl + civiliteLibelleUrl)
       .map((res: any) => {
         console.log(res);
         return res as Civilite[];

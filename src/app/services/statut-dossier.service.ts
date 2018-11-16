@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 import { StatutDossier } from '../models/statut-dossier-libelle';
 
 // temporary imports :
-import { externalHttpRootUrl, statutDossierLibelleUrl } from '../../../privates-url';
+import { rootUrl, statutDossierLibelleUrl } from '../../../privates-url';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -26,7 +26,7 @@ export class StatutDossierService {
   /* GET ONE FICHE MATERIEL BY ID */
   getStatutDossier(): Observable<StatutDossier[]> {
     return this.http
-      .get(externalHttpRootUrl + statutDossierLibelleUrl)
+      .get(rootUrl + statutDossierLibelleUrl)
       .map((res: any) => {
         console.log(res);
         return res as StatutDossier[];

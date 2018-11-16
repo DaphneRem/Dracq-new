@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 import { Titre } from '../models/titre-libelle';
 
 // temporary imports :
-import { externalHttpRootUrl, titreLibelleUrl } from '../../../privates-url';
+import { rootUrl, titreLibelleUrl } from '../../../privates-url';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -26,7 +26,7 @@ export class TitreService {
   /* GET ONE FICHE MATERIEL BY ID */
   getTitre(): Observable<Titre[]> {
     return this.http
-      .get(externalHttpRootUrl + titreLibelleUrl)
+      .get(rootUrl + titreLibelleUrl)
       .map((res: any) => {
         console.log(res);
         return res as Titre[];

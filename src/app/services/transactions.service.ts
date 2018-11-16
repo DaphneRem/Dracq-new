@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Transaction } from './../models/transaction-global';
-import { TransactionsGlobal } from './../mock/transactions-mock';
+// import { TransactionsGlobal } from './../mock/transactions-mock';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

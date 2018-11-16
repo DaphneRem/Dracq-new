@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 import { FormeSociete } from '../models/forme-societe-libelle';
 
 // temporary imports :
-import { externalHttpRootUrl, formeSocieteLibelleUrl } from '../../../privates-url';
+import { rootUrl, formeSocieteLibelleUrl } from '../../../privates-url';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -26,7 +26,7 @@ export class FormeSocieteService {
   /* GET ONE FICHE MATERIEL BY ID */
   getFormeSociete(): Observable<FormeSociete[]> {
     return this.http
-      .get(externalHttpRootUrl + formeSocieteLibelleUrl)
+      .get(rootUrl + formeSocieteLibelleUrl)
       .map((res: any) => {
         console.log(res);
         return res as FormeSociete[];
