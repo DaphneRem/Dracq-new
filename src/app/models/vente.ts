@@ -1,22 +1,27 @@
+import { Bien } from './bien';
+import { Collaborateur } from './collaborateur';
+import { Libelle } from './libelle';
+import { Societe } from './societe';
+
 export class Vente {
-    idVente: number
-    clerc: string;
-    client: string;
-    contactClient: string;
-    vendeur: string;
-    contactVendeur: string;
-    acquereur: string;
-    contactAcquereur: string;
-    confrere: string;
-    contactconfrere: string;
-    statut: string;
-    dateSignature: number; // -1, ------> à vérifier
-    biens: string;
-    commentaireBiens: string;
-    dataRooms: string;
-    commentaireDataRooms: string;
-    createdBy: string;
-    creationDate: Date | string;
-    modifiedBy: string;
-    modificationDate: Date | string;
-}
+      idvente	: number
+      clerc	: Collaborateur;
+      client : Societe;	
+      contactclient	: Collaborateur;
+      vendeur	: Societe;
+      contactvendeur : Collaborateur;
+      acquereur	: Societe;	
+      contactacquereur : Collaborateur;
+      confrere : Societe;
+      contactconfrere : Collaborateur;
+      statut : string;
+      datesignature : Date | string;
+      biens	: Bien[];
+      commentairebiens : string;
+      datarooms	: Libelle[];
+      commentairedatarooms : string;
+      createdby : string;
+      creationdate : Date | string;
+      modifiedby : string;
+      modificationdate : Date | string;
+  }
