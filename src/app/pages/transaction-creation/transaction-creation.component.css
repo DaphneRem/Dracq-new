@@ -11,15 +11,31 @@
     margin-right: 10px;
 }
 
-.header-form {
+/* .header-form {
     margin-bottom: 30px;
-}
+} */
 
 .input-group-append {
     background: #20a8d8;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     color: #ffffff;
+}
+
+.societe, .bien-dataroom {
+    margin: 20px;
+}
+
+.societe-border {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border: 1px solid #e4e5e6;
+}
+
+.bien, .dataroom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid #e4e5e6;
 }
 
 label {
@@ -31,4 +47,49 @@ label {
     font-size: 20px;
     margin: auto;
     color: orange;
+}
+
+.close-icon {
+    cursor: pointer;
+    font-size: 20px;
+    margin: auto;
+    color: red;
+}
+
+.modif-icon {
+    cursor: pointer;
+    font-size: 20px;
+    margin: auto;
+    color: orange;
+}
+
+.display-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-details-icon {
+    font-size: large;
+    margin-right: 5px;
+}
+
+.adress-list {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #e4e5e6;
+    overflow-y: scroll; 
+    max-height: 200px;
+}
+
+.adress-list-item {
+    list-style-type: none;
+}
+
+.adresse {
+    display: flex;
+    justify-content: space-between;
+}
+
+.adress-comment {
+    height: 100px;
 }
