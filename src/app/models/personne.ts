@@ -1,11 +1,11 @@
 export class Personne {
-    idPersonne: number;
+    idpersonne: number;
     titre: string;
     civilite: string;
     nom: string;
     prenom: string;
     initiales: string;
-    telFixe: string;
-    telMobile: string;
+    telfixe: string;
+    telmobile: string;
     email: string;
 }

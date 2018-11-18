@@ -1,13 +1,13 @@
 import { Personne } from './personne';
 
 export class Collaborateur {
-    idCollaborateur: number;
+    idcollaborateur: number;
     personne: Personne;
-    idSociete: number;
+    idsociete: number;
     service: string;
     poste: string;
-    telFixe: string;
-    telMobile: string;
+    telfixe: string;
+    telmobile: string;
     email: string;
 }
 

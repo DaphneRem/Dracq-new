@@ -1,12 +1,12 @@
 export class Adresse {
-    idAdresse: number;
-    l2PointDeRemise: string;
-    l3Construction: string;
-    l4Numero: string;
-    l4Voie: string;
-    l4NomVoie: string;
-    l5Distribution: string;
-    l6CodePostal: string;
-    l6Localite: string;
-    l7Pays: string;
+    idadresse: number;
+    l2pointderemise: string;
+    l3construction: string;
+    l4numero: string;
+    l4voie: string;
+    l4nomvoie: string;
+    l5distribution: string;
+    l6codepostal: string;
+    l6localite: string;
+    l7pays: string;
 }
