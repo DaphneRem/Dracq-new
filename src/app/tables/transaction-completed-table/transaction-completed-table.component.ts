@@ -6,7 +6,8 @@ import {
   EventEmitter,
   OnChanges,
   SimpleChanges,
-  SimpleChange
+  SimpleChange,
+  ViewChild
 } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -21,19 +22,20 @@ import { Transaction } from '../../models/transaction-global';
   templateUrl: './transaction-completed-table.component.html',
   styleUrls: ['./transaction-completed-table.component.css'],
   providers : [
-    TransactionsService
+    TransactionsService,
   ]
 })
 export class TransactionCompletedTableComponent implements OnInit {
-
-   
   @Input() daysTableView: number;
   @Input() headerTableLinkExist: boolean;
   @Input() headerTableLink?: string;
 
+  public venteDetails = {
+    name: 'vente 1',
+  };
+  public primaryModal;
   public render: boolean;
   public data: Transaction[];
-  public primaryModal;
 
   public dataReady = false;
   public customdatatablesOptions: CustomDatatablesOptions = {
@@ -76,7 +78,7 @@ export class TransactionCompletedTableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getTransactionsInProgress(this.daysTableView);
+    // this.getTransactionsInProgress(this.daysTableView);
     this.checkDaysViews();
     this.checkLinks();
     this.displayAction();

@@ -53,6 +53,7 @@
     "rxjs": "^6.3.0",
     "rxjs-compat": "^6.3.0",
     "simple-line-icons": "^2.4.1",
+    "sweetalert2": "^8.0.3",
     "ts-helpers": "^1.1.2",
     "zone.js": "^0.8.26"
   },

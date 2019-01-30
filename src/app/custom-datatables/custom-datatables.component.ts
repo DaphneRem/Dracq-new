@@ -18,6 +18,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { CustomDatatablesOptions } from './models/custom-datatables-options';
 import { CustomThemesService } from './services/custom-datatables-themes.service';
+
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
@@ -34,17 +35,19 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
 
   @Input() customdatatablesOptions: CustomDatatablesOptions;
   @Input() rerenderData; // data to observe (customDatatblesOptions.data from parent element)
+
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
   dtTrigger: Subject<any> = new Subject();
 
   @Output() dataRow = new EventEmitter();
+  @Output() row = new EventEmitter();
+  @Output() selectRows = new EventEmitter();
 
   // rerender onchange variables
   public init = 0;
   public dataReady = true;
   public newData;
-
 
   // datatable const
   public renderOption: boolean;
@@ -55,6 +58,9 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
   public themeName: string;
   public theme: any;
 
+public test = 'ookok';
+
+  public rows;
   public finalData: any = [];
   public data: any = [] ;
   public headerColor: string;
@@ -89,7 +95,8 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
   public excelButton =  {
             extend: 'csv',
             text: 'Export csv',
-            fieldSeparator: ','
+            fieldSeparator: ';',
+            bom: true
         };
   public pageLengthButton =  {
             extend: 'pageLength',
@@ -124,6 +131,12 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
               _: '%d lignes copiées',
               1: '1 ligne copiée'
             }
+        },
+        select : {
+          rows : {
+            _: '%d lignes sélectionnées',
+            1: '1 ligne sélectionnée'
+          }
         }
   };
 
@@ -138,6 +151,7 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   // TODO : voir https://stackoverflow.com/questions/37966718/datatables-export-to-excel-button-is-not-showing pour les options des boutons
+
   initializeDatatable() {
     this.displayDatatables(); // display datatables if data.length
     this.displayCustomOptions();
@@ -183,6 +197,7 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
   displayDatatables() {
     // console.log(this.customdatatablesOptions.createdRow[0]);
     const options = this.customdatatablesOptions;
+    const that = this;
     if (options.data.length) { // if data != 0 or data != []
       this.dtOptions = {
         data: options.data,
@@ -193,15 +208,30 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
         autoWidth: false,
         language : this.frenchLanguage,
         // createdRow: this.displayCreatedRow(),
-        select : 'single',
+        select : options.multiSelection ? true : 'single',
+        // select : {
+        //   style : options.multiSelection ? 'multi' : 'single',
+        // },
         order: options.defaultOrder,
         pageLength : options.rowsMax,
         lengthMenu : options.lenghtMenu,
         responsive : options.responsive,
         dom: 'Bfrtip',
-        buttons: [],
+        buttons: options.selectionBtn ?
+          [{
+            extend: 'selected',
+            text: 'Modifier',
+            className: '',
+            action: function (e, dt, node, config) {
+                      const rows = dt.rows( { selected: true } ).data() ;
+                      console.log(rows);
+                      that.selectRows.emit(rows);
+                    }
+          }]
+         : [],
         rowCallback: (row: Node, data: any[] | Object, index: number) => { // datatable function to display action on double click
             const self = this;
+            //  var rows = this.dtOptions.rows( { selected: true } ).data();
             if (options.importantData) {
               options.importantData.map( item => this.displayImportantData(item, row));
             } else {
@@ -209,7 +239,7 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
             }
             $('td', row).unbind('click');
             $('td', row).bind('click', () => {
-              self.someClickHandler(data);
+              self.someClickHandler(data, row);
             });
             $('td', row).bind('dblclick', () => {
               self.someDblClickHandler(data); // go to file-detail with autoPath when double click on row
@@ -326,14 +356,15 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
         this.customdatatablesOptions.dbClickAction(dataRow);
     }
   }
-  someClickHandler(dataRow: any): void {
+  someClickHandler(dataRow: any, row): void {
     this.idSelectedData = dataRow.id;
     this.dataRow.emit(dataRow);
+    this.row.emit(row);
     // if (dataRow.id && (dataRow.noseg >= 0)) {
     // this.router.navigate([`/detail-file/support/${dataRow.id}/seg/${dataRow.noseg}`]);
     // }
       if (this.customdatatablesOptions.clickActionExist) {
-        this.customdatatablesOptions.clickAction(dataRow);
+        this.customdatatablesOptions.clickAction(dataRow, row);
     }
   }
 
@@ -346,8 +377,7 @@ export class CustomDatatablesComponent implements OnInit, AfterViewInit, OnDestr
         this.finalData.push({
           title: item.title.toUpperCase(),
           data: item.data,
-          className: item.className,
-          render: item.render
+          className: item.className
         })
       );
       // console.log(this.finalData);
