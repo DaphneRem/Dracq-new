@@ -26,6 +26,12 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+/* store imports */
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { selectedVenteReducer } from './+state/+selected-vente/selected-vente.reducer';
+import { selectedVenteInitialState } from './+state/+selected-vente/selected-vente.init';
+
 /* components imports */
 import { AppComponent } from './app.component';
 import { DefaultHomeComponent } from './default-home/default-home.component';
@@ -37,9 +43,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CustomDatatablesModule } from './custom-datatables/custom-datatables.module';
 import { TransactionsCompletedPageComponent } from './pages/transactions-completed-page/transactions-completed-page.component';
 import { TransactionCompletedTableComponent } from './tables/transaction-completed-table/transaction-completed-table.component';
-import { StoreModule } from '@ngrx/store';
-// import { reducers, metaReducers } from './store/reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { environment } from '../environments/environment';
 import { TransactionCreationComponent } from './pages/transaction-creation/transaction-creation.component';
 import { VenteDetailsModalComponent } from './modals/vente-details-modal/vente-details-modal.component';
@@ -64,6 +68,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TransactionCompletedTableComponent,
     TransactionCreationComponent,
     VenteDetailsModalComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -81,6 +86,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbModule,
     TabsModule.forRoot(),
     AppRoutingModule,
+    StoreModule.forRoot({selectedVente: selectedVenteReducer}, {initialState: {selectedVente: selectedVenteInitialState}}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 // Retains last 25 states
+    }),
     // StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
