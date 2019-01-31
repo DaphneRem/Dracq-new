@@ -1,0 +1,22 @@
+.modal-dialog {
+    margin: auto;
+    margin-top: 10%;
+}
+
+/**** btn modif *****/
+.btn-modif{
+    background: #FFB64D;
+    border-color: #FFB64D;
+}
+
+.btn-modif:hover {
+    background-color: #ffffff;
+    background-image: none;
+    border-color: #FFB64D;
+    color : #FFB64D;
+}
+.btn-modif:focus {
+    background-color: #FFB64D;
+    border-color: #FFB64D;
+    color : #ffffff;
+}
