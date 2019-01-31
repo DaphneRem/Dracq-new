@@ -1,10 +1,35 @@
-.modif-btns {
+.modal-dialog {
+    margin: auto;
+    margin-top: 10%;
+}
+
+/**** btn modif *****/
+.btn-modif{
+    background: #FFB64D;
+    border-color: #FFB64D;
+}
+
+.btn-modif:hover {
+    background-color: #ffffff;
+    background-image: none;
+    border-color: #FFB64D;
+    color : #FFB64D;
+}
+.btn-modif:focus {
+    background-color: #FFB64D;
+    border-color: #FFB64D;
+    color : #ffffff;
+}
+
+/**********************************/
+/******** SWAL MODAL OPTION *******/
+/* .modif-btns {
     margin: 20px 15px 10px 15px;
     padding-left: 20px;
     
 }
 .modif-btns .modif {
-        margin-right: 10px;
+    margin-right: 10px;
 }
 
 /deep/ .customSwalBtn {
@@ -24,4 +49,6 @@
 
 /deep/ .customSwalBtn:hover {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
-}
+} */
+/**********************************/
+/**********************************/

@@ -4,3 +4,23 @@
      (selectRows)="AllSelectedRows($event)">
   </custom-datatables>
 </div>
+
+<div bsModal #detailsVente="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div *ngIf="venteDetailsExit" class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Vente n°{{venteDetails.idvente}}</h4>
+        <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{venteDetails.vendeur.nom}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-modif" (click)="goToModif([venteDetails.idvente], true, false)">Modifier</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelDetailsVenteModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
