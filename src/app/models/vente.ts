@@ -4,28 +4,28 @@ import { Libelle } from './libelle';
 import { Societe } from './societe';
 
 export class Vente {
-    idvente	: number
-    clerc	: Collaborateur;
-    client : Societe;	
-    contactclient	: Collaborateur;
-    vendeur	: Societe;
-    contactvendeur : Collaborateur;
-    acquereur	: Societe;	
-    contactacquereur : Collaborateur;
-    confrere : Societe;
-    contactconfrere : Collaborateur;
-    statut : string;
-    datesignature : Date | string;
-    biens	: Bien[];
-    commentairebiens : string;
-    datarooms	: Libelle[];
-    commentairedatarooms : string;
-    createdby : string;
-    creationdate : Date | string;
-    modifiedby : string;
-    modificationdate : Date | string;
+    idvente: number;
+    clerc: Collaborateur;
+    client: Societe;
+    contactclient: Collaborateur;
+    vendeur: Societe;
+    contactvendeur: Collaborateur;
+    acquereur: Societe;
+    contactacquereur: Collaborateur;
+    confrere: Societe;
+    contactconfrere: Collaborateur;
+    statut: string;
+    datesignature: Date | string;
+    biens: Bien[];
+    commentairebiens: string;
+    datarooms: Libelle[];
+    commentairedatarooms: string;
+    createdby: string;
+    creationdate: Date | string;
+    modifiedby: string;
+    modificationdate: Date | string;
       constructor(
-        //{
+        // {
             // idvente: idvente,
             // clerc: clerc,
             // client : client,
@@ -46,7 +46,7 @@ export class Vente {
             // creationdate : creationdate,
             // modifiedby : modifiedby,
             // modificationdate : modificationdate
-        //}
+        // }
     ) {
         // Custom Values
         // this.clerc = clerc,
@@ -76,275 +76,275 @@ export class Vente {
             idcollaborateur	: -1,
             personne :	{
                 idpersonne : -1,
-                titre	: "",
-                civilite :	"",
-                nom	: "",
-                prenom : "",
-                initiales :	"",
-                telfixe	: "",
-                telmobile	: "",
-                email	: ""
+                titre	: '',
+                civilite :	'',
+                nom	: '',
+                prenom : '',
+                initiales :	'',
+                telfixe	: '',
+                telmobile	: '',
+                email	: ''
             },
             idsociete	: -1,
-            service	: "",
-            poste	: "",
-            telfixe	: "",
-            telmobile	: "",
-            email	: ""
+            service	: '',
+            poste	: '',
+            telfixe	: '',
+            telmobile	: '',
+            email	: ''
         },
         this.client = {
             idsociete	: -1,
-            forme	: "",
-            nom	: "",
-            telstandard	: "",
-            faxstandard	: "",
-            emailaccueil : "",
-            codeprofessionnel	: "",
+            forme	: '',
+            nom	: '',
+            telstandard	: '',
+            faxstandard	: '',
+            emailaccueil : '',
+            codeprofessionnel	: '',
             adresse	: {
                 idAdresse	: -1,
-                l2PointDeRemise	: "",
-                l3Construction : "",
-                l4Numero :	"",
-                l4Voie :	"",
-                l4NomVoie	: "",
-                l5Distribution :	"",
-                l6CodePostal : "",
-                l6Localite :	"",
-                l7Pays : ""
+                l2PointDeRemise	: '',
+                l3Construction : '',
+                l4Numero :	'',
+                l4Voie :	'',
+                l4NomVoie	: '',
+                l5Distribution :	'',
+                l6CodePostal : '',
+                l6Localite :	'',
+                l7Pays : ''
             },
             defaultcontact : {
                 idcollaborateur	: -1,
                 personne :	{
                     idpersonne : -1,
-                    titre	: "",
-                    civilite :	"",
-                    nom	: "",
-                    prenom : "",
-                    initiales :	"",
-                    telfixe	: "",
-                    telmobile	: "",
-                    email	: ""
+                    titre	: '',
+                    civilite :	'',
+                    nom	: '',
+                    prenom : '',
+                    initiales :	'',
+                    telfixe	: '',
+                    telmobile	: '',
+                    email	: ''
                 },
                 idsociete	: -1,
-                service	: "",
-                poste	: "",
-                telfixe	: "",
-                telmobile	: "",
-                email	: ""
+                service	: '',
+                poste	: '',
+                telfixe	: '',
+                telmobile	: '',
+                email	: ''
             }
         },	
         this.contactclient= {
             idcollaborateur	: -1,
             personne :	{
                 idpersonne : -1,
-                titre	: "",
-                civilite :	"",
-                nom	: "",
-                prenom : "",
-                initiales :	"",
-                telfixe	: "",
-                telmobile	: "",
-                email	: ""
+                titre	: '',
+                civilite :	'',
+                nom	: '',
+                prenom : '',
+                initiales :	'',
+                telfixe	: '',
+                telmobile	: '',
+                email	: ''
             },
             idsociete	: -1,
-            service	: "",
-            poste	: "",
-            telfixe	: "",
-            telmobile	: "",
-            email	: ""
+            service	: '',
+            poste	: '',
+            telfixe	: '',
+            telmobile	: '',
+            email	: ''
         },
         this.vendeur = {
             idsociete	: -1,
-            forme	: "",
-            nom	: "",
-            telstandard	: "",
-            faxstandard	: "",
-            emailaccueil : "",
-            codeprofessionnel	: "",
+            forme	: '',
+            nom	: '',
+            telstandard	: '',
+            faxstandard	: '',
+            emailaccueil : '',
+            codeprofessionnel	: '',
             adresse	: {
                 idAdresse	: -1,
-                l2PointDeRemise	: "",
-                l3Construction : "",
-                l4Numero :	"",
-                l4Voie :	"",
-                l4NomVoie	: "",
-                l5Distribution :	"",
-                l6CodePostal : "",
-                l6Localite :	"",
-                l7Pays : ""
+                l2PointDeRemise	: '',
+                l3Construction : '',
+                l4Numero :	'',
+                l4Voie :	'',
+                l4NomVoie	: '',
+                l5Distribution :	'',
+                l6CodePostal : '',
+                l6Localite :	'',
+                l7Pays : ''
             },
             defaultcontact : {
                 idcollaborateur	: -1,
                 personne :	{
                     idpersonne : -1,
-                    titre	: "",
-                    civilite :	"",
-                    nom	: "",
-                    prenom : "",
-                    initiales :	"",
-                    telfixe	: "",
-                    telmobile	: "",
-                    email	: ""
+                    titre	: '',
+                    civilite :	'',
+                    nom	: '',
+                    prenom : '',
+                    initiales :	'',
+                    telfixe	: '',
+                    telmobile	: '',
+                    email	: ''
                 },
                 idsociete	: -1,
-                service	: "",
-                poste	: "",
-                telfixe	: "",
-                telmobile	: "",
-                email	: ""
+                service	: '',
+                poste	: '',
+                telfixe	: '',
+                telmobile	: '',
+                email	: ''
             }
         },
         this.contactvendeur = {
             idcollaborateur	: -1,
             personne :	{
                 idpersonne : -1,
-                titre	: "",
-                civilite :	"",
-                nom	: "",
-                prenom : "",
-                initiales :	"",
-                telfixe	: "",
-                telmobile	: "",
-                email	: ""
+                titre	: '',
+                civilite :	'',
+                nom	: '',
+                prenom : '',
+                initiales :	'',
+                telfixe	: '',
+                telmobile	: '',
+                email	: ''
             },
             idsociete	: -1,
-            service	: "",
-            poste	: "",
-            telfixe	: "",
-            telmobile	: "",
-            email	: ""
+            service	: '',
+            poste	: '',
+            telfixe	: '',
+            telmobile	: '',
+            email	: ''
         },
         this.acquereur = {
             idsociete	: -1,
-            forme	: "",
-            nom	: "",
-            telstandard	: "",
-            faxstandard	: "",
-            emailaccueil : "",
-            codeprofessionnel	: "",
+            forme	: '',
+            nom	: '',
+            telstandard	: '',
+            faxstandard	: '',
+            emailaccueil : '',
+            codeprofessionnel	: '',
             adresse	: {
                 idAdresse	: -1,
-                l2PointDeRemise	: "",
-                l3Construction : "",
-                l4Numero :	"",
-                l4Voie :	"",
-                l4NomVoie	: "",
-                l5Distribution :	"",
-                l6CodePostal : "",
-                l6Localite :	"",
-                l7Pays : ""
+                l2PointDeRemise	: '',
+                l3Construction : '',
+                l4Numero :	'',
+                l4Voie :	'',
+                l4NomVoie	: '',
+                l5Distribution :	'',
+                l6CodePostal : '',
+                l6Localite :	'',
+                l7Pays : ''
             },
             defaultcontact : {
                 idcollaborateur	: -1,
                 personne :	{
                     idpersonne : -1,
-                    titre	: "",
-                    civilite :	"",
-                    nom	: "",
-                    prenom : "",
-                    initiales :	"",
-                    telfixe	: "",
-                    telmobile	: "",
-                    email	: ""
+                    titre	: '',
+                    civilite :	'',
+                    nom	: '',
+                    prenom : '',
+                    initiales :	'',
+                    telfixe	: '',
+                    telmobile	: '',
+                    email	: ''
                 },
                 idsociete	: -1,
-                service	: "",
-                poste	: "",
-                telfixe	: "",
-                telmobile	: "",
-                email	: ""
+                service	: '',
+                poste	: '',
+                telfixe	: '',
+                telmobile	: '',
+                email	: ''
             }
-        },	
+        },
         this.contactacquereur = {
             idcollaborateur	: -1,
             personne :	{
                 idpersonne : -1,
-                titre	: "",
-                civilite :	"",
-                nom	: "",
-                prenom : "",
-                initiales :	"",
-                telfixe	: "",
-                telmobile	: "",
-                email	: ""
+                titre	: '',
+                civilite :	'',
+                nom	: '',
+                prenom : '',
+                initiales :	'',
+                telfixe	: '',
+                telmobile	: '',
+                email	: ''
             },
             idsociete	: -1,
-            service	: "",
-            poste	: "",
-            telfixe	: "",
-            telmobile	: "",
-            email	: ""
+            service	: '',
+            poste	: '',
+            telfixe	: '',
+            telmobile	: '',
+            email	: ''
         },
         this.confrere = {
             idsociete	: -1,
-            forme	: "",
-            nom	: "",
-            telstandard	: "",
-            faxstandard	: "",
-            emailaccueil : "",
-            codeprofessionnel	: "",
+            forme	: '',
+            nom	: '',
+            telstandard	: '',
+            faxstandard	: '',
+            emailaccueil : '',
+            codeprofessionnel	: '',
             adresse	: {
                 idAdresse	: -1,
-                l2PointDeRemise	: "",
-                l3Construction : "",
-                l4Numero :	"",
-                l4Voie :	"",
-                l4NomVoie	: "",
-                l5Distribution :	"",
-                l6CodePostal : "",
-                l6Localite :	"",
-                l7Pays : ""
+                l2PointDeRemise	: '',
+                l3Construction : '',
+                l4Numero :	'',
+                l4Voie :	'',
+                l4NomVoie	: '',
+                l5Distribution :	'',
+                l6CodePostal : '',
+                l6Localite :	'',
+                l7Pays : ''
             },
             defaultcontact : {
                 idcollaborateur	: -1,
                 personne :	{
                     idpersonne : -1,
-                    titre	: "",
-                    civilite :	"",
-                    nom	: "",
-                    prenom : "",
-                    initiales :	"",
-                    telfixe	: "",
-                    telmobile	: "",
-                    email	: ""
+                    titre	: '',
+                    civilite :	'',
+                    nom	: '',
+                    prenom : '',
+                    initiales :	'',
+                    telfixe	: '',
+                    telmobile	: '',
+                    email	: ''
                 },
                 idsociete	: -1,
-                service	: "",
-                poste	: "",
-                telfixe	: "",
-                telmobile	: "",
-                email	: ""
+                service	: '',
+                poste	: '',
+                telfixe	: '',
+                telmobile	: '',
+                email	: ''
             }
         },
         this.contactconfrere = {
             idcollaborateur	: -1,
             personne :	{
                 idpersonne : -1,
-                titre	: "",
-                civilite :	"",
-                nom	: "",
-                prenom : "",
-                initiales :	"",
-                telfixe	: "",
-                telmobile	: "",
-                email	: ""
+                titre	: '',
+                civilite :	'',
+                nom	: '',
+                prenom : '',
+                initiales :	'',
+                telfixe	: '',
+                telmobile	: '',
+                email	: ''
             },
             idsociete	: -1,
-            service	: "",
-            poste	: "",
-            telfixe	: "",
-            telmobile	: "",
-            email	: ""
+            service	: '',
+            poste	: '',
+            telfixe	: '',
+            telmobile	: '',
+            email	: ''
         },
-        this.statut = "",
+        this.statut = '',
         this.datesignature = null,
         this.biens	= [],
-        this.commentairebiens = "",
+        this.commentairebiens = '',
         this.datarooms	= [],
-        this.commentairedatarooms = "",
-        this.createdby = "",
+        this.commentairedatarooms = '',
+        this.createdby = '',
         this.creationdate = new Date(),
-        this.modifiedby = "",
+        this.modifiedby = '',
         this.modificationdate = null
         }
 }

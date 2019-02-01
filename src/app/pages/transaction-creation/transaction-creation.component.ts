@@ -48,6 +48,7 @@ import { Vente } from '../../models/vente';
 })
 export class TransactionCreationComponent implements OnInit {
   public newVente: Vente = new Vente();
+  public newBien: Bien = new Bien();
   public datesignatureNgFormat: NgbDateStruct;
 
   public civiliteLibelle: Libelle[];
@@ -59,6 +60,7 @@ export class TransactionCreationComponent implements OnInit {
   public adresse: Adresse;
   public codePostal: Codepostal[];
   public localite: Codepostal[];
+  public allCodePostal: Codepostal[];
   public person: Personne;
   public collaborateur: Collaborateur;
   public societe: Societe;
@@ -78,6 +80,7 @@ export class TransactionCreationComponent implements OnInit {
   ngOnInit() {
     console.log('init TransactionComponent');
     console.log(this.newVente);
+    // this.getAllCodePostal();
     this.getCiviliteLibelle();
     this.getDataRoomLibelle();
     this.getFormeSocieteLibelle();
@@ -146,6 +149,13 @@ export class TransactionCreationComponent implements OnInit {
 
 /********************************* GET CODE POSTAL & LIBELLE ***************************/
 
+  getAllCodePostal() {
+    this.codePostalLocaliteService.getAllCodePostalAndLocalite()
+      .subscribe(data => {
+        this.allCodePostal = data;
+        console.log(this.allCodePostal);
+      });
+  }
   getCodePostal(code) {
     this.codePostalLocaliteService.getCodePostal(code).subscribe(data => {
       this.codePostal = data;

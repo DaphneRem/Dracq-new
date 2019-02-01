@@ -14,8 +14,13 @@ import { Codepostal } from '../models/code-postal';
 import {
   rootUrl,
   codePostalUrl,
-  localiteUrl
+  codePostalSearchUrl,
+  localiteSearchUrl
 } from 'privates-url';
+
+// codePostalUrl = '/info/codepostal';
+// codePostalSearchUrl = '?codepostal='; // ex : 93210
+// localiteSearchUrl = '?localite='; // ex : paris
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -27,18 +32,27 @@ const httpOptions = {
 export class CodePostalLocaliteService {
   constructor(private http: HttpClient) {}
 
-    getCodePostal(code): Observable<Codepostal[]> {
+    getAllCodePostalAndLocalite(): Observable<Codepostal[]> {
+      return this.http
+        .get(rootUrl + codePostalUrl)
+        .map((res: any) => {
+            console.log(res);
+            return res as Codepostal[];
+        });
+    }
+
+    getCodePostal(code: string): Observable<Codepostal[]> {
         return this.http
-            .get(rootUrl + codePostalUrl + code)
+            .get(rootUrl + codePostalUrl + codePostalSearchUrl + code)
             .map((res: any) => {
                 console.log(res);
                 return res as Codepostal[];
             });
     }
 
-    getLocalite(localite): Observable<Codepostal[]> {
+    getLocalite(localite: string): Observable<Codepostal[]> {
         return this.http
-            .get(rootUrl + localiteUrl + localite)
+            .get(rootUrl + codePostalUrl + localiteSearchUrl + localite)
             .map((res: any) => {
                 console.log(res);
                 return res as Codepostal[];
