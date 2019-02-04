@@ -22,6 +22,25 @@
 }
 
 /**********************************/
+/*********** ICON MODIF ***********/
+
+/deep/ .icons-actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+/deep/ .datatbles-modif-btn {
+    color: #FFB64D;
+    cursor: pointer;
+}
+
+/deep/ .datatbles-view-details-btn {
+    color: #008ec6;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+/**********************************/
 /******** SWAL MODAL OPTION *******/
 /* .modif-btns {
     margin: 20px 15px 10px 15px;

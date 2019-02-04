@@ -35,6 +35,7 @@ export class Columns {
   className?: string;
   // createdCell?: any;
   render?: any;
+  orderable?: boolean;
 }
 
 export class ColumnDefs {

@@ -1,5 +1,7 @@
 export interface SelectedVente {
-    allId: number[];    
+    allId: number[];
+    previousId: number [];
+    nextId: number[];
     modif: boolean;
     multiSelection: boolean;
 }

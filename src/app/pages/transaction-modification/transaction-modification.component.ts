@@ -29,10 +29,14 @@ import { Societe } from '../../models/societe';
 
 import { Vente } from '../../models/vente';
 
+import { Store } from '@ngrx/store';
+import { SelectedVente } from '../../+state/+selected-vente/selected-vente.interface';
+
+
 @Component({
-  selector: 'app-transaction-creation',
-  templateUrl: './transaction-creation.component.html',
-  styleUrls: ['./transaction-creation.component.css'],
+  selector: 'app-transaction-modification',
+  templateUrl: './transaction-modification.component.html',
+  styleUrls: ['./transaction-modification.component.css'],
   providers: [
     AdresseService,
     BienService,
@@ -42,15 +46,18 @@ import { Vente } from '../../models/vente';
     PersonneService,
     SocieteService,
     I18n,
+    Store,
     { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n },
     { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
   ]
 })
-export class TransactionCreationComponent implements OnInit {
-  public newVente: Vente = new Vente();
+export class TransactionModificationComponent implements OnInit {
   public newBien: Bien = new Bien();
   public datesignatureNgFormat: NgbDateStruct;
 
+  public selectedVente: SelectedVente;
+  public idCurrentVente: number;
+  
   public civiliteLibelle: Libelle[];
   public dataRoomLibelle: Libelle[];
   public formeSocieteLibelle: Libelle[];
@@ -74,12 +81,13 @@ export class TransactionCreationComponent implements OnInit {
     private libelleService: LibelleService,
     private location: Location,
     private personneService: PersonneService,
-    private societeService: SocieteService
+    private societeService: SocieteService,
+    private selectedVenteStore: Store<any>,
   ) {}
 
   ngOnInit() {
     console.log('init TransactionComponent');
-    console.log(this.newVente);
+    this.storeSubscibtion();
     // this.getAllCodePostal();
     // this.getCiviliteLibelle();
     // this.getDataRoomLibelle();
@@ -108,6 +116,14 @@ export class TransactionCreationComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  storeSubscibtion() {
+    this.selectedVenteStore.subscribe(data => {
+      this.selectedVente = data.selectedVente;
+      console.log(this.selectedVente);
+      this.idCurrentVente = this.selectedVente.allId[0];
+    });
   }
 
 /*********************************** GET LIBELLE *****************************/

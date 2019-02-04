@@ -1,0 +1,420 @@
+<main class="main">
+  <!-- Breadcrumb -->
+  <ol class="breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-item">
+      <span>Modification vente n°{{idCurrentVente}} </span>
+    </li>
+    <li class="breadcrumb-menu d-md-down-none">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <!-- <a class="btn" href="#"><i class="icon-speech"></i></a>
+        <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> Dashboard</a>
+        <a class="btn" href="#"><i class="icon-settings"></i> Settings</a> -->
+        <button class="btn btn-success btn-block save-btn" type="button"><i class="icofont icofont-save save-transaction-icon"></i></button>
+        <button class="btn" type="button">Précédent</button>
+        <button class="btn" type="button">Suivant</button>
+      </div>
+    </li>
+  </ol>
+  <div *ngIf="idCurrentVente > 0" class="container-fluid">
+    <div class="card">
+      <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <div class="card-body col-lg-12 row header-form">
+          <div class="col-lg-5">
+            <div class="row">
+              <div class="col-lg-3">
+                <button class="btn btn-block btn-secondary" type="button" (click)="goBack()">Retour</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <!-- <div class="form-group row">
+                <label class="col-md-3 col-form-label col-lg-6" for="text-input">Statut</label>
+                <div class="col-md-9 col-lg-6">
+                  <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+                  <span class="help-block">This is a help text</span>
+                </div>
+            </div> -->
+            <div class="form-group row">
+              <label class="col-md-3 col-form-label" for="select1">Statut :</label>
+              <div class="col-md-9">
+                <select id="select1" name="select1" class="form-control">
+                  <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group row">
+              <label class="deadline clo-lg-3 col-form-label">
+                Date de signature :
+              </label>
+              <div class="input-group col-lg-8">
+                <input class="form-control" 
+                  placeholder="jj-mm-aaaa" 
+                  name="deadlineDate"
+                  ngbDatepicker #deadlineDate="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="deadlineDate.toggle()" type="button">
+                    <i class="icon-calendar icons"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- {{newVente.datesignature | json }} -->
+            </div>
+          </div>
+        </div>
+        <div class="row societe">
+          <div class="col-lg-12 societe-border">
+          <div class="col-lg-12 row">
+            <div class="col-lg-4">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="select1">Clerc : </label>
+                <div class="col-md-6">
+                  <select id="clerc-select" name="clercSelect" class="form-control">
+                    <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                  </select>
+                </div>
+                <div class="col-md-2 add-icon">
+                  <i class="icon-plus icons"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="select1">Client : </label>
+                <div class="col-md-6">
+                  <select id="clerc-select" name="clercSelect" class="form-control">
+                    <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                  </select>
+                </div>
+                <div class="col-md-2 add-icon">
+                  <i class="icon-plus icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Sub category (option contact default) : clerc & client -->
+          <div class="col-lg-12 row">
+            <div class="col-lg-4">
+              <div class="form-group row">
+                <!-- clerc contact -->
+                <label class="col-md-4 col-form-label" for="select1">Contact : </label>
+                <div class="col-md-6">
+                  <select id="clerc-select" name="clercSelect" class="form-control">
+                    <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                  </select>
+                </div>
+                <div class="col-md-2 add-icon">
+                  <i class="icon-plus icons"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group row">
+                <!-- client contact -->
+                <label class="col-md-4 col-form-label" for="select1">Contact : </label>
+                <div class="col-md-6">
+                  <select id="clerc-select" name="clercSelect" class="form-control">
+                    <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                  </select>
+                </div>
+                <div class="col-md-2 add-icon">
+                  <i class="icon-plus icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--------------------------------------------->
+          <div class="col-lg-12 row">
+            <div class="col-lg-4">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="select1">Vendeur : </label>
+                <div class="col-md-6">
+                  <select id="clerc-select" name="clercSelect" class="form-control">
+                    <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                  </select>
+                </div>
+                <div class="col-md-2 add-icon">
+                  <i class="icon-plus icons"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="select1">Acquéreur : </label>
+                <div class="col-md-6">
+                  <select id="clerc-select" name="clercSelect" class="form-control">
+                    <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                  </select>
+                </div>
+                <div class="col-md-2 add-icon">
+                  <i class="icon-plus icons"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group row">
+                <label class="col-md-4 col-form-label" for="select1">Portefeuille : </label>
+                <div class="col-md-6">
+                  <select id="clerc-select" name="clercSelect" class="form-control">
+                    <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                  </select>
+                </div>
+                <div class="col-md-2 add-icon">
+                  <i class="icon-plus icons"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Sub category (option contactb default) : vendeur & acquereur & portefeuille -->
+          <div class="col-lg-12 row">
+              <div class="col-lg-4">
+                <div class="form-group row">
+                  <!-- vendeur contact -->
+                  <label class="col-md-4 col-form-label" for="select1">Contact : </label>
+                  <div class="col-md-6">
+                    <select id="clerc-select" name="clercSelect" class="form-control">
+                      <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2 add-icon">
+                    <i class="icon-plus icons"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group row">
+                  <!-- acquereur contact -->
+                  <label class="col-md-4 col-form-label" for="select1">Contact : </label>
+                  <div class="col-md-6">
+                    <select id="clerc-select" name="clercSelect" class="form-control">
+                      <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2 add-icon">
+                    <i class="icon-plus icons"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group row">
+                  <!-- portefeuille contact -->
+                  <label class="col-md-4 col-form-label" for="select1">Contact : </label>
+                  <div class="col-md-6">
+                    <select id="clerc-select" name="clercSelect" class="form-control">
+                      <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-2 add-icon">
+                    <i class="icon-plus icons"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--------------------------------------------->
+        </div>
+      </div>
+      <div class="row dataroom-row">
+        <!-- DATAROOM -->
+        <div class="col-lg-12 dataroom row">
+          <div class="col-lg-4">
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label" for="select6">Confrère : </label>
+              <div class="col-lg-6">
+                <select id="clerc-select" name="clercSelect" class="form-control">
+                  <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                </select>
+              </div>
+              <div class="col-lg-2 add-icon">
+                <i class="icon-plus icons"></i>
+              </div>
+            </div>
+            <!-- Sub category (option contactb default) : confrere -->
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label" for="select6">Contact : </label>
+              <div class="col-lg-6">
+                <select id="clerc-select" name="clercSelect" class="form-control">
+                  <option *ngFor="let s of statutLibelle" value="s">{{s.libelle}}</option>
+                </select>
+              </div>
+              <div class="col-lg-2 add-icon">
+                <i class="icon-plus icons"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="col-form-label" for="multiple-select">Type de DataRoom :</label>
+              <div >
+                <select class="form-control" id="multiple-select" multiple="" name="multiple-select" size="5">
+                  <option *ngFor="let dataroom of dataRoomLibelle; let i = index" value="1">{{dataroom.libelle}}</option>
+                </select>
+              </div></div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="col-form-label">Commentaire : </label>
+              <input 
+                type="text" 
+                class="form-control adress-comment" 
+                id="adressComment" 
+                name="adressComment"
+                autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row bien-row">
+        <div class="col-lg-12 bien row">
+            <!-- BIEN -->
+          <div class="col-lg-6 ">
+            <p>Bien :</p>
+            <div class="row">
+              <div class="col-lg-4 display-end">
+                <div class="form-group row">
+                  <label class="col-form-label col-lg-6">N° : </label>
+                  <input 
+                    type="text" 
+                    class="form-control col-lg-4" 
+                    id="adresseNum" 
+                    name="adresseNum"
+                    autocomplete="off">
+                  </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="form-group row">
+                  <label class="col-form-label col-lg-4">Rue : </label>
+                  <input 
+                    type="text" 
+                    class="form-control col-lg-6" 
+                    id="adresseRue" 
+                    name="adresseRue"
+                    autocomplete="off">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 display-end">
+                <div class="form-group row">
+                  <label class="col-form-label col-lg-6">CP : </label>
+                  <input 
+                    type="text" 
+                    class="form-control col-lg-4" 
+                    id="adresseCp" 
+                    name="adresseCp"
+                    autocomplete="off">
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="form-group row">
+                  <label class="col-form-label col-lg-4">Ville : </label>
+                  <input 
+                    type="text" 
+                    class="form-control col-lg-6" 
+                    id="adresseVille" 
+                    name="adresseVille"
+                    autocomplete="off">
+                </div>
+              </div>
+            </div>
+            <!-- BUTTONS -->
+            <div class="row">
+              <div class="col-lg-2"></div>
+              <div class="col-lg-4">
+                <button class="btn btn-block btn-success" type="button">         
+                  Ajouter
+                </button>
+              </div>
+              <div class="col-lg-4">
+                <button class="btn btn-block btn-outline-success" type="button">
+                  <i class="icon-plus icons add-details-icon"></i>
+                  Ajouter Détails
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- COMMENTAIRE -->
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="col-form-label">Commentaire : </label>
+                  <input 
+                    type="text" 
+                    class="form-control adress-comment" 
+                    id="adressComment" 
+                    name="adressComment"
+                    autocomplete="off">
+                  </div>
+                </div>                
+              </div>
+            </div>
+          </div>
+          <div class="row col-lg-12">
+            <div class="col-lg-12">
+            <!-- LIST -->
+              <ul class="adress-list">
+                <li class="adress-list-item">
+                  <p class="adresse">
+                    <span>2 boulevard de la madelaine 75009 PARIS</span>
+                    <span>
+                      <i class="icon-close close-icon icons add-details-icon"></i>
+                      <i class="icon-pencil modif-icon icons add-details-icon"></i>
+                    </span>
+                  </p>
+                </li>
+                <li class="adress-list-item">
+                    <p class="adresse">
+                      <span>2 boulevard de la madelaine 75009 PARIS</span>
+                      <span>
+                        <i class="icon-close close-icon icons add-details-icon"></i>
+                        <i class="icon-pencil modif-icon icons add-details-icon"></i>
+                      </span>
+                    </p>
+                </li>
+                <li class="adress-list-item">
+                  <p class="adresse">
+                    <span>2 boulevard de la madelaine 75009 PARIS</span>
+                    <span>
+                      <i class="icon-close close-icon icons add-details-icon"></i>
+                      <i class="icon-pencil modif-icon icons add-details-icon"></i>
+                    </span>
+                  </p>
+                </li>
+                <li class="adress-list-item">
+                  <p class="adresse">
+                    <span>2 boulevard de la madelaine 75009 PARIS</span>
+                    <span>
+                      <i class="icon-close close-icon icons add-details-icon"></i>
+                      <i class="icon-pencil modif-icon icons add-details-icon"></i>
+                    </span>
+                  </p>
+                </li>
+                <li class="adress-list-item">
+                  <p class="adresse">
+                    <span>2 boulevard de la madelaine 75009 PARIS</span>
+                    <span>
+                      <i class="icon-close close-icon icons add-details-icon"></i>
+                      <i class="icon-pencil modif-icon icons add-details-icon"></i>
+                    </span>
+                  </p>
+                </li>
+                <li class="adress-list-item">
+                  <p class="adresse">
+                    <span>2 boulevard de la madelaine 75009 PARIS</span>
+                    <span>
+                      <i class="icon-close close-icon icons add-details-icon"></i>
+                      <i class="icon-pencil modif-icon icons add-details-icon"></i>
+                    </span>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

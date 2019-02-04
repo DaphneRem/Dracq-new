@@ -8,7 +8,9 @@ import {
   SimpleChanges,
   SimpleChange,
   ViewChild,
-  ElementRef
+  ElementRef,
+  AfterViewInit,
+  Renderer 
 } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -28,7 +30,7 @@ import { venteData } from '../../data/fake-data-vente';
     TransactionsService,
   ]
 })
-export class TransactionCompletedTableComponent implements OnInit {
+export class TransactionCompletedTableComponent implements AfterViewInit, OnInit {
   @ViewChild('myModal') modal;
 
   @Input() daysTableView: number;
@@ -38,7 +40,7 @@ export class TransactionCompletedTableComponent implements OnInit {
   public myModal;
   public venteDetails;
   public venteDetailsExit = false;
-
+  public selectedRow;
   public primaryModal;
   public render: boolean;
   public data: Transaction[];
@@ -80,7 +82,8 @@ export class TransactionCompletedTableComponent implements OnInit {
 
   constructor(
     private transactionService: TransactionsService,
-    private router: Router
+    private router: Router,
+    private renderer: Renderer
   ) {}
 
   ngOnInit() {
@@ -97,6 +100,17 @@ export class TransactionCompletedTableComponent implements OnInit {
     this.checkDaysViews();
     this.checkLinks();
     this.displayAction();
+  }
+
+  ngAfterViewInit(): void {
+    this.renderer.listenGlobal('document', 'click', (event) => {
+      console.log(event);
+      if (event.target.classList.contains('datatbles-modif-btn')) {
+        console.log('modif btn clicked');
+
+        // this.router.navigate(["/person/" + event.target.getAttribute("view-person-id")]);
+      }
+    });
   }
 
   openModal(myModal) {
@@ -131,6 +145,7 @@ export class TransactionCompletedTableComponent implements OnInit {
     };
     this.customdatatablesOptions.clickAction = (dataRow) => {
       console.log('one click');
+      this.selectedRow = dataRow;
     }
     this.customdatatablesOptions.tooltipHeader = 'Double cliquer sur un fichier pour avoir une vue détaillée';
   }
@@ -166,6 +181,7 @@ export class TransactionCompletedTableComponent implements OnInit {
 
   displayColumns(vente) {
     console.log('data columns :' + vente[0]);
+    let that = this;
     this.customdatatablesOptions.columns = [
       {
         title : 'Clerc',
@@ -221,6 +237,13 @@ export class TransactionCompletedTableComponent implements OnInit {
           return data.datarooms; // (array)
         }
       },
+      {
+        title: 'Action',
+        data: function (data, type, row, meta) {
+        data = `<button type="button" class="btn btn-primary datatbles-modif-btn" data-toggle="modal">Détails</button>`;
+          return data;
+        }
+      }
       // {
       //   title: '',
       //   data: 'typeDR',

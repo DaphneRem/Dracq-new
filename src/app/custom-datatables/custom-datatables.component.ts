@@ -377,6 +377,8 @@ public test = 'ookok';
         this.finalData.push({
           title: item.title.toUpperCase(),
           data: item.data,
+          orderabe: item.orderable,
+          render: item.render,
           className: item.className
         })
       );

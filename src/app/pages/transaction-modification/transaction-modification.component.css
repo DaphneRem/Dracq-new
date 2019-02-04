@@ -1,0 +1,108 @@
+:host {
+    width: 100%;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.card {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* .header-form {
+    margin-bottom: 30px;
+} */
+.save-btn {
+    margin-right: 10px;
+    color: #ffffff;
+    border-radius: 5px !important;
+    padding: 3px 15px;
+    border: 1px solid #ffffff;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.save-btn:hover {
+    color: #4dbd74;
+    border: 1px solid #4dbd74;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-group-append {
+    background: #20a8d8;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #ffffff;
+}
+
+.societe, .bien-row, .dataroom-row {
+    margin: 20px;
+    border: 1px solid #e4e5e6;
+
+}
+
+.societe-border {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.bien, .dataroom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+label {
+    text-align: right;
+}
+
+.add-icon {
+    cursor: pointer;
+    font-size: 20px;
+    margin: auto;
+    color: orange;
+}
+
+.close-icon {
+    cursor: pointer;
+    font-size: 20px;
+    margin: auto;
+    color: red;
+}
+
+.modif-icon {
+    cursor: pointer;
+    font-size: 20px;
+    margin: auto;
+    color: orange;
+}
+
+.display-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-details-icon {
+    font-size: large;
+    margin-right: 5px;
+}
+
+.adress-list {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #e4e5e6;
+    overflow-y: scroll; 
+    max-height: 200px;
+}
+
+.adress-list-item {
+    list-style-type: none;
+}
+
+.adresse {
+    display: flex;
+    justify-content: space-between;
+}
+
+.adress-comment {
+    height: 100px;
+}

@@ -1,7 +1,7 @@
-<div *ngIf="checkDataReady()" >
+<div *ngIf="dataReady">
   <custom-datatables 
     [customdatatablesOptions]="customdatatablesOptions"
-     (selectRows)="AllSelectedRows($event)">
+    (selectRows)="allSelectedRows($event)">
   </custom-datatables>
 </div>
 
@@ -18,8 +18,8 @@
         <p>{{venteDetails.vendeur.nom}}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-modif" (click)="goToModif([venteDetails.idvente], true, false)">Modifier</button>
-        <button type="button" class="btn btn-secondary" (click)="cancelDetailsVenteModal()">Fermer</button>
+        <button type="button" class="btn btn-primary btn-modif" (click)="goToModifAction([+venteDetails.idvente], true, false)">Modifier</button>
+        <button type="button" class="btn btn-secondary" (click)="closeDetailsVenteModal()">Fermer</button>
       </div>
     </div>
   </div>

@@ -47,6 +47,7 @@ import { TransactionCompletedTableComponent } from './tables/transaction-complet
 import { environment } from '../environments/environment';
 import { TransactionCreationComponent } from './pages/transaction-creation/transaction-creation.component';
 import { VenteDetailsModalComponent } from './modals/vente-details-modal/vente-details-modal.component';
+import { TransactionModificationComponent } from './pages/transaction-modification/transaction-modification.component';
 
 /* const declarations */
 const APP_CONTAINERS = [
@@ -68,6 +69,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TransactionCompletedTableComponent,
     TransactionCreationComponent,
     VenteDetailsModalComponent,
+    TransactionModificationComponent,
     
   ],
   imports: [
