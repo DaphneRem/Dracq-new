@@ -12,8 +12,14 @@
         <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> Dashboard</a>
         <a class="btn" href="#"><i class="icon-settings"></i> Settings</a> -->
         <button class="btn btn-success btn-block save-btn" type="button"><i class="icofont icofont-save save-transaction-icon"></i></button>
-        <button class="btn" type="button">Précédent</button>
-        <button class="btn" type="button">Suivant</button>
+        <button *ngIf="previousVenteExist" class="btn direction-btn" type="button" (click)="changeVente('previous')">
+          <i class="icofont icofont-thin-left"></i>
+          Précédent
+        </button>
+        <button *ngIf="nextVenteExist" class="btn direction-btn" type="button" (click)="changeVente('next')">
+          Suivant
+          <i class="icofont icofont-thin-right"></i>
+        </button>
       </div>
     </li>
   </ol>

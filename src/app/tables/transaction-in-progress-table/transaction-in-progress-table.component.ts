@@ -115,9 +115,12 @@ export class TransactionInProgressTableComponent implements AfterViewInit, OnIni
   addClickActionToDatatablesIcons() {
     this.renderer.listenGlobal('document', 'click', (event) => {
       if (event.target.classList.contains('datatbles-modif-btn')) {
+        console.log('click to modif datatable icon');
+        console.log('event.target.classList', event.target.classList);
         let idVente = event.target.id;
         this.goToModifAction([+idVente], true, false)
       } else if (event.target.classList.contains('datatbles-view-details-btn')) {
+        console.log('click to view datatable icon');
         let idVente = event.target.id;
         this.venteDetailsExit = true;
         this.customdatatablesOptions.data.forEach(item => {
@@ -125,6 +128,7 @@ export class TransactionInProgressTableComponent implements AfterViewInit, OnIni
             this.venteDetails = item;
           }
         })
+        console.log(this.modal);
         this.modal.show();
       }
     });
@@ -154,7 +158,8 @@ export class TransactionInProgressTableComponent implements AfterViewInit, OnIni
     // let backModal = document.getElementsByClassName('show');
     // console.log(backModal);
     this.modal.hide();
-    this.modal.hide();
+    this.modal.animated = false;
+    this.modal.show = false;
     this.checkPreviousAndNextId(allId[0])
     this.selectedVenteStore.dispatch({
       type: 'ADD_SELECTED_VENTE',
@@ -166,8 +171,9 @@ export class TransactionInProgressTableComponent implements AfterViewInit, OnIni
         multiSelection: multiSelection
       }
     });
-    let that = this;
-    setTimeout(() => that.router.navigate([`./modification`]), 1000);
+    // let that = this;
+    // setTimeout(() => that.router.navigate([`./modification`]), 3000);
+    this.router.navigate([`./modification`]);
   }
 
   clearselectedVenteStore() {

@@ -73,6 +73,11 @@ export class TransactionModificationComponent implements OnInit {
   public societe: Societe;
   public bien: Bien;
 
+  public previousVenteExist: boolean;
+  public nextVenteExist: boolean;
+  public previousVenteId: number;
+  public nextVenteId: number;
+
   constructor(
     private adresseService: AdresseService,
     private bienService: BienService,
@@ -87,8 +92,9 @@ export class TransactionModificationComponent implements OnInit {
 
   ngOnInit() {
     console.log('init TransactionComponent');
-    this.storeSubscibtion();
+    this.initVente();
     // this.getAllCodePostal();
+
     // this.getCiviliteLibelle();
     // this.getDataRoomLibelle();
     // this.getFormeSocieteLibelle();
@@ -108,7 +114,7 @@ export class TransactionModificationComponent implements OnInit {
     //   nom: 'GUILLARME',
     //   prenom: 'Christophe',
     //   initiales: 'CGU',
-    //   telFixe: '0101010101',
+    //   telFixe: '00000',
     //   telMobile: '',
     //   email: 'c.guillarme@gmail.com'
     // });
@@ -118,12 +124,41 @@ export class TransactionModificationComponent implements OnInit {
     this.location.back();
   }
 
+  initVente() {
+    this.storeSubscibtion();
+  }
+
   storeSubscibtion() {
     this.selectedVenteStore.subscribe(data => {
       this.selectedVente = data.selectedVente;
       console.log(this.selectedVente);
       this.idCurrentVente = this.selectedVente.allId[0];
+      console.log(this.selectedVente.previousId.length);
+      console.log(this.selectedVente.nextId.length);
+      if (this.selectedVente.previousId.length > 0) {
+        let lastIndex = this.selectedVente.previousId.length - 1;
+        this.previousVenteExist = true;
+        this.previousVenteId = this.selectedVente.previousId[lastIndex];
+      } else {
+        this.previousVenteExist = false;
+        this.previousVenteId = null;
+      }
+      if (this.selectedVente.nextId.length > 0) {
+        this.nextVenteExist = true;
+        this.nextVenteId = this.selectedVente.nextId[0];
+      } else {
+        this.nextVenteExist = false;
+        this.nextVenteId = null;
+      }
     });
+  }
+
+  changeVente(action) {
+    if (action === 'previous') {
+      console.log('previous ID : ', this.previousVenteId);
+    } else if (action === 'next') {
+      console.log('next ID : ', this.nextVenteId);
+    }
   }
 
 /*********************************** GET LIBELLE *****************************/
