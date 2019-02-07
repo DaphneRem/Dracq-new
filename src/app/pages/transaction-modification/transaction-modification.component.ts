@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { NgbDatepickerI18n, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -28,6 +28,7 @@ import { SocieteService } from '../../services/societe.service';
 import { Societe } from '../../models/societe';
 
 import { Vente } from '../../models/vente';
+import { VenteService } from '../../services/vente.service';
 
 import { Store } from '@ngrx/store';
 import { SelectedVente } from '../../+state/+selected-vente/selected-vente.interface';
@@ -47,11 +48,15 @@ import { SelectedVente } from '../../+state/+selected-vente/selected-vente.inter
     SocieteService,
     I18n,
     Store,
+    VenteService,
     { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n },
     { provide: NgbDateParserFormatter, useClass: NgbDateCustomParserFormatter }
   ]
 })
 export class TransactionModificationComponent implements OnInit {
+  @ViewChild('addSocieteModal') addSocieteModal;
+
+
   public newBien: Bien = new Bien();
   public datesignatureNgFormat: NgbDateStruct;
 
@@ -64,6 +69,7 @@ export class TransactionModificationComponent implements OnInit {
   public statutLibelle: Libelle[];
   public titreLibelle: Libelle[];
 
+  public vente: Vente;
   public adresse: Adresse;
   public codePostal: Codepostal[];
   public localite: Codepostal[];
@@ -88,11 +94,13 @@ export class TransactionModificationComponent implements OnInit {
     private personneService: PersonneService,
     private societeService: SocieteService,
     private selectedVenteStore: Store<any>,
+    private venteService: VenteService
   ) {}
 
   ngOnInit() {
     console.log('init TransactionComponent');
     this.initVente();
+    this.getVente(1);
     // this.getAllCodePostal();
 
     // this.getCiviliteLibelle();
@@ -151,6 +159,13 @@ export class TransactionModificationComponent implements OnInit {
         this.nextVenteId = null;
       }
     });
+  }
+
+  getVente(id) {
+    this.venteService.getvente(id)
+      .subscribe(data => {
+        this.vente = data;
+      })
   }
 
   changeVente(action) {

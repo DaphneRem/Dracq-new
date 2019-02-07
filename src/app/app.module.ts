@@ -48,6 +48,7 @@ import { environment } from '../environments/environment';
 import { TransactionCreationComponent } from './pages/transaction-creation/transaction-creation.component';
 import { VenteDetailsModalComponent } from './modals/vente-details-modal/vente-details-modal.component';
 import { TransactionModificationComponent } from './pages/transaction-modification/transaction-modification.component';
+import { AddSocieteModalComponent } from './modals/add-societe-modal/add-societe-modal.component';
 
 /* const declarations */
 const APP_CONTAINERS = [
@@ -70,6 +71,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TransactionCreationComponent,
     VenteDetailsModalComponent,
     TransactionModificationComponent,
+    AddSocieteModalComponent,
     
   ],
   imports: [
