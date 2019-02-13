@@ -33,6 +33,11 @@ import { VenteService } from '../../services/vente.service';
 import { Store } from '@ngrx/store';
 import { SelectedVente } from '../../+state/+selected-vente/selected-vente.interface';
 
+import { Groupe } from '../../models/groupe';
+import { GroupeService } from '../../services/groupe.service';
+
+import { Utilisateur } from '../../models/utilisateur';
+import { UtilisateurService } from '../../services/utilisateur.service';
 
 @Component({
   selector: 'app-transaction-modification',
@@ -43,9 +48,11 @@ import { SelectedVente } from '../../+state/+selected-vente/selected-vente.inter
     BienService,
     CodePostalLocaliteService,
     CollaborateurService,
+    GroupeService,
     LibelleService,
     PersonneService,
     SocieteService,
+    UtilisateurService,
     I18n,
     Store,
     VenteService,
@@ -62,7 +69,7 @@ export class TransactionModificationComponent implements OnInit {
 
   public selectedVente: SelectedVente;
   public idCurrentVente: number;
-  
+
   public civiliteLibelle: Libelle[];
   public dataRoomLibelle: Libelle[];
   public formeSocieteLibelle: Libelle[];
@@ -75,9 +82,12 @@ export class TransactionModificationComponent implements OnInit {
   public localite: Codepostal[];
   public allCodePostal: Codepostal[];
   public person: Personne;
+  public utilisateur: Utilisateur;
   public collaborateur: Collaborateur;
   public societe: Societe;
   public bien: Bien;
+  public groupe: Groupe;
+  public allGroupes: Groupe[];
 
   public previousVenteExist: boolean;
   public nextVenteExist: boolean;
@@ -89,43 +99,51 @@ export class TransactionModificationComponent implements OnInit {
     private bienService: BienService,
     private codePostalLocaliteService: CodePostalLocaliteService,
     private collaborateurService: CollaborateurService,
+    private groupeService: GroupeService,
     private libelleService: LibelleService,
     private location: Location,
     private personneService: PersonneService,
     private societeService: SocieteService,
     private selectedVenteStore: Store<any>,
+    private utilisateurService: UtilisateurService,
     private venteService: VenteService
   ) {}
 
   ngOnInit() {
     console.log('init TransactionComponent');
     this.initVente();
-    this.getVente(1);
-    // this.getAllCodePostal();
+    // this.testRequests();
+  }
 
-    // this.getCiviliteLibelle();
-    // this.getDataRoomLibelle();
-    // this.getFormeSocieteLibelle();
-    // this.getStatutDossierLibelle();
-    // this.getTitreLibelle();
-    // this.getCodePostal(93210);
-    // this.getLocalite('paris');
-    // this.getPersonne(1);
-    // this.getCollaborateur(1);
-    // this.getSociete(1);
-    // this.getBien(1);
-    // this.getAdresse(1);
-    // this.updatePersonne({
-    //   idPersonne: 1,
-    //   titre: '',
-    //   civilite: 'M.,',
-    //   nom: 'GUILLARME',
-    //   prenom: 'Christophe',
-    //   initiales: 'CGU',
-    //   telFixe: '00000',
-    //   telMobile: '',
-    //   email: 'c.guillarme@gmail.com'
-    // });
+  testRequests() {
+    // this.getAllCodePostal();
+    this.getVente(1);
+    this.getCiviliteLibelle();
+    this.getDataRoomLibelle();
+    this.getFormeSocieteLibelle();
+    this.getStatutDossierLibelle();
+    this.getTitreLibelle();
+    this.getCodePostal(93210);
+    this.getLocalite('paris');
+    this.getAllGroupes();
+    this.getGroupe(1);
+    this.getPersonne(1);
+    this.getUtilisateur(1);
+    this.getCollaborateur(1);
+    this.getSociete(1);
+    this.getBien(1);
+    this.getAdresse(1);
+    this.updatePersonne({
+      idPersonne: 1,
+      titre: '',
+      civilite: 'M.,',
+      nom: 'GUILLARME',
+      prenom: 'Christophe',
+      initiales: 'CGU',
+      telFixe: '00000',
+      telMobile: '',
+      email: 'c.guillarme@gmail.com'
+    });
   }
 
   goBack() {
@@ -165,14 +183,50 @@ export class TransactionModificationComponent implements OnInit {
     this.venteService.getvente(id)
       .subscribe(data => {
         this.vente = data;
-      })
+      });
   }
 
   changeVente(action) {
     if (action === 'previous') {
+      let previousIdFirstItem = this.selectedVente.previousId.shift();
       console.log('previous ID : ', this.previousVenteId);
+      console.log('allID : ', [this.previousVenteId]);
+      console.log('nextId : ', [this.idCurrentVente, ...this.selectedVente.nextId]);
+      console.log('previousId : ', this.selectedVente.previousId);
+      this.selectedVenteStore.dispatch({
+        type: 'ADD_SELECTED_VENTE',
+        payload: {
+          allId: [this.previousVenteId],
+          previousId: [this.idCurrentVente, ...this.selectedVente.nextId],
+          nextId: this.selectedVente.previousId,
+          modif: true,
+          multiSelection: false
+        }
+      });
+      this.selectedVenteStore.subscribe(data => {
+        this.selectedVente = data.selectedVente;
+        console.log(this.selectedVente);
+      });
     } else if (action === 'next') {
+      let nextIdFirstItem = this.selectedVente.nextId.shift();
       console.log('next ID : ', this.nextVenteId);
+      console.log('allID : ', [this.nextVenteId]);
+      console.log('previousId : ', [this.idCurrentVente, ...this.selectedVente.previousId]);
+      console.log('nextId : ', this.selectedVente.nextId);
+      this.selectedVenteStore.dispatch({
+        type: 'ADD_SELECTED_VENTE',
+        payload: {
+          allId: [this.nextVenteId],
+          previousId: [this.idCurrentVente, ...this.selectedVente.previousId],
+          nextId: this.selectedVente.nextId,
+          modif: true,
+          multiSelection: false
+        }
+      });
+      this.selectedVenteStore.subscribe(data => {
+        this.selectedVente = data.selectedVente;
+        console.log(this.selectedVente);
+      });
     }
   }
 
@@ -236,6 +290,22 @@ export class TransactionModificationComponent implements OnInit {
     });
   }
 
+/************************************ GROUPE *******************************/
+
+  getAllGroupes() {
+    this.groupeService.getAllGroupes().subscribe(data => {
+      this.allGroupes = data;
+      console.log('allGroupes : ', this.allGroupes);
+    });
+  }
+
+  getGroupe(id) {
+    this.groupeService.getGroupe(id).subscribe(data => {
+      this.groupe = data;
+      console.log('allGroupes : ', this.groupe);
+    });
+  }
+
 /*********************************** PERSONNE *****************************/
 
   getPersonne(id) {
@@ -254,6 +324,15 @@ export class TransactionModificationComponent implements OnInit {
       });
   }
 
+/************************************** UTILISATEUR *********************************/
+
+  getUtilisateur(id) {
+    this.utilisateurService.getUtilisateur(id)
+      .subscribe(data => {
+        this.utilisateur = data;
+        console.log('utilisateur : ', this.utilisateur);
+      });
+  }
 /*********************************** GET COLLABORATEUR *****************************/
 
   getCollaborateur(id) {

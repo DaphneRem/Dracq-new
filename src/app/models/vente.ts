@@ -24,6 +24,29 @@ export class Vente {
     creationdate: Date | string;
     modifiedby: string;
     modificationdate: Date | string;
+}
+
+export class NewVente {
+    idvente: number;
+    clerc: Collaborateur;
+    client: Societe;
+    contactclient: Collaborateur;
+    vendeur: Societe;
+    contactvendeur: Collaborateur;
+    acquereur: Societe;
+    contactacquereur: Collaborateur;
+    confrere: Societe;
+    contactconfrere: Collaborateur;
+    statut: string;
+    datesignature: Date | string;
+    biens: Bien[];
+    commentairebiens: string;
+    datarooms: Libelle[];
+    commentairedatarooms: string;
+    createdby: string;
+    creationdate: Date | string;
+    modifiedby: string;
+    modificationdate: Date | string;
       constructor(
         // {
             // idvente: idvente,
@@ -132,8 +155,8 @@ export class Vente {
                 telmobile	: '',
                 email	: ''
             }
-        },	
-        this.contactclient= {
+        },
+        this.contactclient = {
             idcollaborateur	: -1,
             personne :	{
                 idpersonne : -1,
@@ -345,6 +368,6 @@ export class Vente {
         this.createdby = '',
         this.creationdate = new Date(),
         this.modifiedby = '',
-        this.modificationdate = null
+        this.modificationdate = null;
         }
 }

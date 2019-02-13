@@ -1,5 +1,5 @@
  export class Groupe {
-    idgroupe : number;
-    nom	: string;
-    droit : number;
+    idgroupe: number;
+    nom: string;
+    droit: number;
 }
